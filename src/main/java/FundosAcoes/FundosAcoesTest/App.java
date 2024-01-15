@@ -13,15 +13,35 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://statusinvest.com.br/acoes/petr3");
+        System.out.println( "Iniciando Busca de Informações!" );
         
+        //INicializa a navegação no StatusInvest
+        boolean driverOk = StatusInvest.DriverInicializar();
+        System.out.println("Statuinvest - Inicializando driver: " + driverOk);
         
-        WebElement e1 = driver.findElement(By.xpath("//div[@title='Valor atual do ativo']"));
-        System.out.println(e1.findElement(By.className("value")).getText() );
-        
-  
-        driver.quit();
+        if (driverOk) {
+        	
+	        System.out.println("Preco Encontrado: " + StatusInvest.Preco());
+	        
+	        System.out.println("P/VP Encontrado: " + StatusInvest.PVP());
+	        
+	        System.out.println("liquidezDiaria Encontrado: " + StatusInvest.LiquidezDiaria());
+	        
+	        System.out.println("DY Encontrado: " + StatusInvest.DY());
+	        
+	        System.out.println("ROE Encontrado: " + StatusInvest.ROE());
+	        
+	        System.out.println("Div_ebitida Encontrado: " + StatusInvest.Div_Ebitda());
+	        
+	        System.out.println("Div_ebitida Encontrado: " + StatusInvest.Ev_Ebitda());
+	        
+	        System.out.println("PL Encontrado: " + StatusInvest.PL());
+	        
+	        System.out.println("Patrimonio_Liq Encontrado: " + StatusInvest.Patrimonio_Liq());
+	        
+	        System.out.println("PAyout Encontrado: " + StatusInvest.PAYOUT());
+
+	        System.out.println("Statuinvest - Encerrando driver: " + StatusInvest.DriverEncerrar());
+        }
     }
 }
