@@ -1,10 +1,5 @@
 package FundosAcoes.FundosAcoesTest;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 /**
  * Hello world!
  *
@@ -15,8 +10,17 @@ public class App
     {
         System.out.println( "Iniciando Busca de Informações!" );
         
+        
+        PrintarStatusInvest();
+        //PrintarInvestidor10();
+        
         //INicializa a navegação no StatusInvest
-        boolean driverOk = StatusInvest.DriverInicializar();
+        
+    }
+    
+    public static void PrintarStatusInvest() {
+    	
+    	boolean driverOk = StatusInvest.DriverInicializar();
         System.out.println("Statuinvest - Inicializando driver: " + driverOk);
         
         if (driverOk) {
@@ -39,9 +43,22 @@ public class App
 	        
 	        System.out.println("Patrimonio_Liq Encontrado: " + StatusInvest.Patrimonio_Liq());
 	        
-	        System.out.println("PAyout Encontrado: " + StatusInvest.PAYOUT());
+	        System.out.println("VlrMercado Encontrado: " + StatusInvest.VlrMercado());
 
 	        System.out.println("Statuinvest - Encerrando driver: " + StatusInvest.DriverEncerrar());
+        }
+    }
+    
+    public static void PrintarInvestidor10() {
+    	
+    	boolean driverOk = investidor10.DriverInicializarinvest10();
+        System.out.println("Statuinvest - Inicializando driver: " + driverOk);
+        
+        if (driverOk) {
+        	
+	        System.out.println("Preco Encontrado: " + investidor10.Preco());
+	        
+	       
         }
     }
 }

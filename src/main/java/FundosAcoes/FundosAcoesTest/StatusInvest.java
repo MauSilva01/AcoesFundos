@@ -9,6 +9,17 @@ public class StatusInvest {
 
 
     private static  WebDriver driver = new ChromeDriver();
+    
+   // String Preco = Preco();
+  //  String pvp = PVP();
+   // String LiquidezDiaria = LiquidezDiaria();   
+   // String dy = DY();
+   // String roe = ROE();
+   // String div_ebitda = Div_Ebitda();
+   // String ev_ebitda = Ev_Ebitda();
+   // String pl = PL();
+   // String patrimonio_liq = Patrimonio_Liq();
+    
 	
 	public static boolean DriverInicializar() {
 
@@ -43,8 +54,8 @@ public class StatusInvest {
 		System.out.println("StatusInvest - Buscando Preço ");
 		String vlrRetorno = "null";
 		try {
-	        WebElement e1 = driver.findElement(By.xpath("//div[@title='Valor atual do ativo']"));
-	        vlrRetorno = e1.findElement(By.className("value")).getText();
+	        WebElement e11 = driver.findElement(By.xpath("//div[@title='Valor atual do ativo']"));
+	        vlrRetorno = e11.findElement(By.className("value")).getText();
 	        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -58,9 +69,9 @@ public class StatusInvest {
 		System.out.println("StatusInvest - Buscando P/VP ");
 		String vlrRetorno = "null";
 		try {
-	        WebElement e1 = driver.findElement(By.xpath("//div[@title='Facilita a análise e comparação da relação do preço de negociação de um ativo com seu VPA.']"));       
+	        WebElement e11 = driver.findElement(By.xpath("//div[@title='Facilita a análise e comparação da relação do preço de negociação de um ativo com seu VPA.']"));       
 	        
-	        vlrRetorno = e1.findElement(By.className("value")).getText();
+	        vlrRetorno = e11.findElement(By.className("value")).getText();
 	        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -189,6 +200,21 @@ public class StatusInvest {
 	        WebElement e14 = e13.findElement(By.xpath(".."));
 	        vlrRetorno = e14.findElement(By.className("value")).getText();
 	        System.out.println(vlrRetorno);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		
+		}
+
+		return vlrRetorno;
+	}
+	
+	public static String VlrMercado( ) {
+		System.out.println("StatusInvest - Buscando Valor Mercado ");
+		String vlrRetorno = "null";
+		try {
+			 WebElement e11 = driver.findElement(By.xpath("//div[@title='O valor da ação multiplicado pelo número de ações existentes']"));
+		     vlrRetorno = e11.findElement(By.className("value")).getText();
+		     System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		
