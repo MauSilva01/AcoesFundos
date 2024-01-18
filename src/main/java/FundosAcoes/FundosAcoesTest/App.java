@@ -10,6 +10,7 @@ public class App
     {
         System.out.println( "Iniciando Busca de Informações!" );
         
+        ConexaoSqlite.adicionarDados();
         
         //PrintarStatusInvest();
         //PrintarInvestidor10();

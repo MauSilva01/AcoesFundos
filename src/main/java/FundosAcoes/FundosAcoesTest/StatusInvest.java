@@ -16,7 +16,7 @@ public class StatusInvest {
 	public static boolean DriverInicializar() {
 
 		try {
-			driver.get("https://statusinvest.com.br/acoes/petr3");
+			driver.get("https://statusinvest.com.br/acoes/B3SA3");
 	
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -46,7 +46,7 @@ public class StatusInvest {
         String vlrRetorno = "null";
 
         try {
-            WebElement e11 = driver.findElement(By.xpath("//h1[@title='PETR3 - PETROBRAS']"));
+            WebElement e11 = driver.findElement(By.xpath("//h1[@class='lh-4']"));
             vlrRetorno = e11.getText().trim();
             System.out.println(vlrRetorno);
         } catch (Exception e) {
