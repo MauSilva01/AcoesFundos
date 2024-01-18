@@ -11,10 +11,12 @@ public class App
         System.out.println( "Iniciando Busca de Informações!" );
         
         
-        PrintarStatusInvest();
+        //PrintarStatusInvest();
         //PrintarInvestidor10();
         
         //INicializa a navegação no StatusInvest
+        
+        
         
     }
     
@@ -24,6 +26,8 @@ public class App
         System.out.println("Statuinvest - Inicializando driver: " + driverOk);
         
         if (driverOk) {
+        	
+        	System.out.println("Preco Encontrado: " + StatusInvest.Codigo());
         	
 	        System.out.println("Preco Encontrado: " + StatusInvest.Preco());
 	        
@@ -42,6 +46,8 @@ public class App
 	        System.out.println("PL Encontrado: " + StatusInvest.PL());
 	        
 	        System.out.println("Patrimonio_Liq Encontrado: " + StatusInvest.Patrimonio_Liq());
+	        
+	        //System.out.println("VlrMercado Encontrado: " + StatusInvest.PAYOUT());
 	        
 	        System.out.println("VlrMercado Encontrado: " + StatusInvest.VlrMercado());
 

@@ -10,15 +10,7 @@ public class StatusInvest {
 
     private static  WebDriver driver = new ChromeDriver();
     
-   // String Preco = Preco();
-  //  String pvp = PVP();
-   // String LiquidezDiaria = LiquidezDiaria();   
-   // String dy = DY();
-   // String roe = ROE();
-   // String div_ebitda = Div_Ebitda();
-   // String ev_ebitda = Ev_Ebitda();
-   // String pl = PL();
-   // String patrimonio_liq = Patrimonio_Liq();
+  
     
 	
 	public static boolean DriverInicializar() {
@@ -48,6 +40,23 @@ public class StatusInvest {
 		
 		return true;
 	}
+	
+	public static String Codigo() {
+        System.out.println("StatusInvest - Buscando código ");
+        String vlrRetorno = "null";
+
+        try {
+            WebElement e11 = driver.findElement(By.xpath("//h1[@title='PETR3 - PETROBRAS']"));
+            vlrRetorno = e11.getText().trim();
+            System.out.println(vlrRetorno);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return vlrRetorno;
+    }
+
+    // Outros métodos e parte do código da sua classe...
 
 	
 	public static String Preco( ) {
@@ -190,23 +199,21 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
-	public static String PAYOUT( ) {
-		System.out.println("StatusInvest - Buscando PAYOUT ");
-		String vlrRetorno = "null";
-		try {
-			WebElement e11 = driver.findElement(By.className("card chart-and-list rounded pt-3 pb-3 mb-5 show-empty-callback")); 
-	        WebElement e12 = e11.findElement(By.xpath("//span[text()='ATUAL']"));
-	        WebElement e13 = e12.findElement(By.xpath(".."));
-	        WebElement e14 = e13.findElement(By.xpath(".."));
-	        vlrRetorno = e14.findElement(By.className("value")).getText();
-	        System.out.println(vlrRetorno);
-		} catch(Exception e) {
-			System.out.println(e.toString());
-		
-		}
-
-		return vlrRetorno;
-	}
+//	public static String PAYOUT( ) {
+//		System.out.println("StatusInvest - Buscando PAYOUT ");
+//		String vlrRetorno = "null";
+//		try {
+//			WebElement e11 = driver.findElement(By.className("card chart-and-list rounded pt-3 pb-3 mb-5 show-empty-callback"));
+//	        WebElement e12 = e11.findElement(By.xpath("//span[text()='ATUAL']/following-sibling::strong/span"));
+//	        vlrRetorno = e12.getText().trim();
+//	        System.out.println(vlrRetorno);
+//		} catch(Exception e) {
+//			System.out.println(e.toString());
+//		
+//		}
+//
+//		return vlrRetorno;
+//	}
 	
 	public static String VlrMercado( ) {
 		System.out.println("StatusInvest - Buscando Valor Mercado ");
