@@ -9,34 +9,28 @@ import java.sql.Statement;
 
 public class ConexaoSqlite {
 
-	public static void main(String[] args) {
-		
-		
-	 }
-	
-	public static void adicionarDados() {
+	public static void adicionarDados(String sPapel) {
 		Connection conn = ObterConexaoBanco();
 		
-		boolean driverOk = StatusInvest.DriverInicializar();
+		boolean driverOk = StatusInvest.DriverInicializar(sPapel);
         System.out.println("Statuinvest - Inicializando driver: " + driverOk);
 			
         if (driverOk) { 
-		String codigo = StatusInvest.Codigo();
-		System.out.println("Preco Encontrado: " + StatusInvest.Codigo());
-		String preco = StatusInvest.Preco();
-		String pvp = StatusInvest.PVP();
-		String liquidezDiaria = StatusInvest.LiquidezDiaria();   
-		String dy = StatusInvest.DY();
-		String roe = StatusInvest.ROE();
-		String div_ebitda = StatusInvest.Div_Ebitda();
-		String ev_ebitda = StatusInvest.Ev_Ebitda();
-		String pl = StatusInvest.PL();
-		String patrimonio_liq = StatusInvest.Patrimonio_Liq();
-		String vlrMercado = StatusInvest.VlrMercado();
-			 
-		inserirNoBanco(conn , codigo,  preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, patrimonio_liq, vlrMercado);
-		
-		System.out.println("Statuinvest - Encerrando driver: " + StatusInvest.DriverEncerrar());
+			String codigo = sPapel;
+			String preco = StatusInvest.Preco();
+			String pvp = StatusInvest.PVP();
+			String liquidezDiaria = StatusInvest.LiquidezDiaria();   
+			String dy = StatusInvest.DY();
+			String roe = StatusInvest.ROE();
+			String div_ebitda = StatusInvest.Div_Ebitda();
+			String ev_ebitda = StatusInvest.Ev_Ebitda();
+			String pl = StatusInvest.PL();
+			String patrimonio_liq = StatusInvest.Patrimonio_Liq();
+			String vlrMercado = StatusInvest.VlrMercado();
+				 
+			inserirNoBanco(conn , codigo,  preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, patrimonio_liq, vlrMercado);
+			
+			
         }
 	}
 	 
@@ -78,6 +72,7 @@ public class ConexaoSqlite {
 	            preparedStatement.executeUpdate();
 	        
 	            System.out.println("Dados inseridos com Sucesso!!");
+	            
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();

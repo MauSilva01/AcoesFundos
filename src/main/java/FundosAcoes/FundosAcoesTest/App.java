@@ -10,25 +10,49 @@ public class App
     {
         System.out.println( "Iniciando Busca de Informações!" );
         
-        ConexaoSqlite.adicionarDados();
+        ConexaoSqlite.adicionarDados("ABCB4");
+        ConexaoSqlite.adicionarDados("AERI3");
+        ConexaoSqlite.adicionarDados("B3SA3");
+        ConexaoSqlite.adicionarDados("BBDC3");
+        ConexaoSqlite.adicionarDados("BBSE3");
+        ConexaoSqlite.adicionarDados("BEES3");
+        ConexaoSqlite.adicionarDados("BHIA3");
+        ConexaoSqlite.adicionarDados("BMGB4");
+        ConexaoSqlite.adicionarDados("BRAP3");
+        ConexaoSqlite.adicionarDados("CIEL3");
+        ConexaoSqlite.adicionarDados("CMIG4");
+        ConexaoSqlite.adicionarDados("CSMG3");
+        ConexaoSqlite.adicionarDados("CXSE3");
+        ConexaoSqlite.adicionarDados("ITSA3");
+        ConexaoSqlite.adicionarDados("ITSA4");
+        ConexaoSqlite.adicionarDados("ITUB3");
+        ConexaoSqlite.adicionarDados("KLBN4");
+        ConexaoSqlite.adicionarDados("MGLU3");
+        ConexaoSqlite.adicionarDados("NGRD3");
+        ConexaoSqlite.adicionarDados("OIBR3");
+        ConexaoSqlite.adicionarDados("PETR3");
+        ConexaoSqlite.adicionarDados("PETR4");
+        ConexaoSqlite.adicionarDados("SANB4");
+        ConexaoSqlite.adicionarDados("SAPR4");
+        ConexaoSqlite.adicionarDados("TAEE4");
+        ConexaoSqlite.adicionarDados("TRPL4");
+        ConexaoSqlite.adicionarDados("XINA11");
+        
         
         //PrintarStatusInvest();
-        //PrintarInvestidor10();
-        
-        //INicializa a navegação no StatusInvest
-        
-        
+        //PrintarInvestidor10(); 
         
     }
     
+    //Printar os valores retornados do site status invest
     public static void PrintarStatusInvest() {
     	
-    	boolean driverOk = StatusInvest.DriverInicializar();
+    	boolean driverOk = StatusInvest.DriverInicializar("");
         System.out.println("Statuinvest - Inicializando driver: " + driverOk);
         
         if (driverOk) {
         	
-        	System.out.println("Preco Encontrado: " + StatusInvest.Codigo());
+        	
         	
 	        System.out.println("Preco Encontrado: " + StatusInvest.Preco());
 	        
@@ -56,6 +80,7 @@ public class App
         }
     }
     
+    //Printar valores retornados do site investidor10
     public static void PrintarInvestidor10() {
     	
     	boolean driverOk = investidor10.DriverInicializarinvest10();

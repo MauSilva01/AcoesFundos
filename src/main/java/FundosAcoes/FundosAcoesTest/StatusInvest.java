@@ -13,10 +13,12 @@ public class StatusInvest {
   
     
 	
-	public static boolean DriverInicializar() {
+	public static boolean DriverInicializar(String sPapel) {
 
 		try {
-			driver.get("https://statusinvest.com.br/acoes/B3SA3");
+			
+			String url = "https://statusinvest.com.br/acoes/" + sPapel;
+			driver.get(url);
 	
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -40,7 +42,9 @@ public class StatusInvest {
 		
 		return true;
 	}
-	
+
+	/*
+	//Busca Codigo da Açao no site Statusinvest
 	public static String Codigo() {
         System.out.println("StatusInvest - Buscando código ");
         String vlrRetorno = "null";
@@ -55,10 +59,9 @@ public class StatusInvest {
 
         return vlrRetorno;
     }
+    */
 
-    // Outros métodos e parte do código da sua classe...
-
-	
+	//Busca Preço da Açao no site Statusinvest
 	public static String Preco( ) {
 		System.out.println("StatusInvest - Buscando Preço ");
 		String vlrRetorno = "null";
@@ -74,6 +77,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca P/VP da Açao no site Statusinvest
 	public static String PVP( ) {
 		System.out.println("StatusInvest - Buscando P/VP ");
 		String vlrRetorno = "null";
@@ -90,6 +94,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca a Liquidez Diaria da Açao no site Statusinvest
 	public static String LiquidezDiaria( ) {
 		System.out.println("StatusInvest - Buscando LiquidezDiaria ");
 		String vlrRetorno = "null";
@@ -108,6 +113,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca o Dividend Yield da açao no site Status invest
 	public static String DY( ) {
 		System.out.println("StatusInvest - Buscando DY ");
 		String vlrRetorno = "null";
@@ -123,7 +129,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 
-	
+	//Busca o ROE da açao fornecida pelo driver no site Status invest
 	public static String ROE( ) {
 		System.out.println("StatusInvest - Buscando ROE ");
 		String vlrRetorno = "null";
@@ -139,6 +145,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca o Div_Ebitda da açao fornecida pelo driver no site Status invest
 	public static String Div_Ebitda( ) {
 		System.out.println("StatusInvest - Buscando div_ebitda ");
 		String vlrRetorno = "null";
@@ -154,6 +161,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca o Ev_Ebitda da açao fornecida pelo driver no site Status invest
 	public static String Ev_Ebitda( ) {
 		System.out.println("StatusInvest - Buscando ev_ebitda ");
 		String vlrRetorno = "null";
@@ -169,6 +177,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca o Patrimonio Liquido da açao fornecida pelo driver no site Status inves
 	public static String PL( ) {
 		System.out.println("StatusInvest - Buscando Patrimonio ");
 		String vlrRetorno = "null";
@@ -184,6 +193,7 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
+	//Busca o PL da açao fornecida pelo driver no site Status inves
 	public static String Patrimonio_Liq( ) {
 		System.out.println("StatusInvest - Buscando Patrimonio_Liq ");
 		String vlrRetorno = "null";
