@@ -13,6 +13,7 @@ public class ConexaoSqlite {
 		Connection conn = ObterConexaoBanco();
 		
 		boolean driverOk = StatusInvest.DriverInicializar(sPapel);
+		boolean driverOk1 = investidor10.DriverInicializar(sPapel);
         System.out.println("Statuinvest - Inicializando driver: " + driverOk);
 			
         if (driverOk) { 
@@ -32,14 +33,32 @@ public class ConexaoSqlite {
 			
 			
         }
+        
+        if (driverOk1) { 
+			String codigo = sPapel;
+			String preco = investidor10.Preco();
+			String pvp = investidor10.PVP();
+			String liquidezDiaria = investidor10.LiquidezDiaria();   
+			String dy = investidor10.DY();
+			String roe = investidor10.ROE();
+			String div_ebitda = investidor10.Div_Ebitda();
+			String ev_ebitda = investidor10.Ev_Ebitda();
+			String pl = investidor10.PL();
+			String patrimonio_liq = investidor10.Patrimonio_Liq();
+			String vlrMercado = investidor10.VlrMercado();
+				 
+			inserirNoBanco(conn , codigo,  preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, patrimonio_liq, vlrMercado);
+			
+			
+        }
 	}
 	 
-	 
+	
 	 public static Connection ObterConexaoBanco() {
 		 Connection conn = null;
 		    try {
 		      // Cria a conexão com o banco de dados
-		      conn = DriverManager.getConnection("jdbc:sqlite:C:/PROGRAMAS/fundosAcoes/fundosAcoes1/Cotacoes.db");
+		      conn = DriverManager.getConnection("jdbc:sqlite:C:/Programas/FundosAçoes/fundosAcoes/BD/Cotacoes.db");
 		      
 		      System.out.println("Conexão com o banco de dados SQL Server estabelecida com sucesso!");
 		  

@@ -10,37 +10,37 @@ public class App
     {
         System.out.println( "Iniciando Busca de Informações!" );
         
-        ConexaoSqlite.adicionarDados("ABCB4");
-        ConexaoSqlite.adicionarDados("AERI3");
-        ConexaoSqlite.adicionarDados("B3SA3");
-        ConexaoSqlite.adicionarDados("BBDC3");
-        ConexaoSqlite.adicionarDados("BBSE3");
-        ConexaoSqlite.adicionarDados("BEES3");
-        ConexaoSqlite.adicionarDados("BHIA3");
-        ConexaoSqlite.adicionarDados("BMGB4");
-        ConexaoSqlite.adicionarDados("BRAP3");
-        ConexaoSqlite.adicionarDados("CIEL3");
-        ConexaoSqlite.adicionarDados("CMIG4");
-        ConexaoSqlite.adicionarDados("CSMG3");
-        ConexaoSqlite.adicionarDados("CXSE3");
-        ConexaoSqlite.adicionarDados("ITSA3");
-        ConexaoSqlite.adicionarDados("ITSA4");
-        ConexaoSqlite.adicionarDados("ITUB3");
-        ConexaoSqlite.adicionarDados("KLBN4");
-        ConexaoSqlite.adicionarDados("MGLU3");
-        ConexaoSqlite.adicionarDados("NGRD3");
-        ConexaoSqlite.adicionarDados("OIBR3");
-        ConexaoSqlite.adicionarDados("PETR3");
-        ConexaoSqlite.adicionarDados("PETR4");
-        ConexaoSqlite.adicionarDados("SANB4");
-        ConexaoSqlite.adicionarDados("SAPR4");
-        ConexaoSqlite.adicionarDados("TAEE4");
-        ConexaoSqlite.adicionarDados("TRPL4");
-        ConexaoSqlite.adicionarDados("XINA11");
-        
+//        ConexaoSqlite.adicionarDados("ABCB4");
+//        ConexaoSqlite.adicionarDados("AERI3");
+//        ConexaoSqlite.adicionarDados("B3SA3");
+//        ConexaoSqlite.adicionarDados("BBDC3");
+//        ConexaoSqlite.adicionarDados("BBSE3");
+//        ConexaoSqlite.adicionarDados("BEES3");
+//        ConexaoSqlite.adicionarDados("BHIA3");
+//        ConexaoSqlite.adicionarDados("BMGB4");
+//        ConexaoSqlite.adicionarDados("BRAP3");
+//        ConexaoSqlite.adicionarDados("CIEL3");
+//        ConexaoSqlite.adicionarDados("CMIG4");
+//        ConexaoSqlite.adicionarDados("CSMG3");
+//        ConexaoSqlite.adicionarDados("CXSE3");
+//        ConexaoSqlite.adicionarDados("ITSA3");
+//        ConexaoSqlite.adicionarDados("ITSA4");
+//        ConexaoSqlite.adicionarDados("ITUB3");
+//        ConexaoSqlite.adicionarDados("KLBN4");
+//        ConexaoSqlite.adicionarDados("MGLU3");
+//        ConexaoSqlite.adicionarDados("NGRD3");
+//        ConexaoSqlite.adicionarDados("OIBR3");
+//        ConexaoSqlite.adicionarDados("PETR3");
+//        ConexaoSqlite.adicionarDados("PETR4");
+//        ConexaoSqlite.adicionarDados("SANB4");
+//        ConexaoSqlite.adicionarDados("SAPR4");
+//        ConexaoSqlite.adicionarDados("TAEE4");
+//        ConexaoSqlite.adicionarDados("TRPL4");
+//        ConexaoSqlite.adicionarDados("XINA11");
+//        
         
         //PrintarStatusInvest();
-        //PrintarInvestidor10(); 
+        PrintarInvestidor10(); 
         
     }
     
@@ -83,14 +83,23 @@ public class App
     //Printar valores retornados do site investidor10
     public static void PrintarInvestidor10() {
     	
-    	boolean driverOk = investidor10.DriverInicializarinvest10();
-        System.out.println("Statuinvest - Inicializando driver: " + driverOk);
+    	boolean driverOk = investidor10.DriverInicializar("");
+        System.out.println("investidor10 - Inicializando driver: " + driverOk);
         
         if (driverOk) {
         	
 	        System.out.println("Preco Encontrado: " + investidor10.Preco());
 	        
+	        System.out.println("Preco Encontrado: " + investidor10.PVP());
 	       
+	        System.out.println("Preco Encontrado: " + investidor10.DY());
+	        
+	        System.out.println("Preco Encontrado: " + investidor10.ROE());
+	        
+	        System.out.println("Preco Encontrado: " + investidor10.LiquidezDiaria());
+	        
+	        System.out.println("Statuinvest - Encerrando driver: " + investidor10.DriverEncerrar());
+		       
         }
     }
 }
