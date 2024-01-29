@@ -209,21 +209,6 @@ public class StatusInvest {
 		return vlrRetorno;
 	}
 	
-//	public static String PAYOUT( ) {
-//		System.out.println("StatusInvest - Buscando PAYOUT ");
-//		String vlrRetorno = "null";
-//		try {
-//			WebElement e11 = driver.findElement(By.className("card chart-and-list rounded pt-3 pb-3 mb-5 show-empty-callback"));
-//	        WebElement e12 = e11.findElement(By.xpath("//span[text()='ATUAL']/following-sibling::strong/span"));
-//	        vlrRetorno = e12.getText().trim();
-//	        System.out.println(vlrRetorno);
-//		} catch(Exception e) {
-//			System.out.println(e.toString());
-//		
-//		}
-//
-//		return vlrRetorno;
-//	}
 	
 	public static String VlrMercado( ) {
 		System.out.println("StatusInvest - Buscando Valor Mercado ");

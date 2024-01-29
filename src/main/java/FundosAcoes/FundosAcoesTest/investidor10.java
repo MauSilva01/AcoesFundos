@@ -15,7 +15,7 @@ public class investidor10 {
 
 		try {
 			
-			String url = "https://investidor10.com.br/acoes/abcb4";
+			String url = "https://investidor10.com.br/acoes/" + sPapel;
 			driver.get(url);
 	
 		} catch(Exception e) {
@@ -153,8 +153,11 @@ public class investidor10 {
 		System.out.println("investidor10 - Buscando Patrimonio ");
 		String vlrRetorno = "null";
 		try {
-	        WebElement e11 = driver.findElement(By.xpath("//div[@title='Dá uma ideia do quanto o mercado está disposto a pagar pelos lucros da empresa.']"));
-	        vlrRetorno = e11.findElement(By.className("value")).getText();
+			
+			 WebElement e11 = driver.findElement(By.className("cell")); 
+		        WebElement e12 = e11.findElement(By.xpath("//div[@class='value d-flex justify-content-between align-items-center']"));
+		        WebElement e13 = e12.findElement(By.xpath(".."));
+		        vlrRetorno = e13.findElement(By.className("value")).getText();		
 	        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -168,8 +171,8 @@ public class investidor10 {
 		System.out.println("investidor10 - Buscando Patrimonio_Liq ");
 		String vlrRetorno = "null";
 		try {
-	        WebElement e11 = driver.findElement(By.xpath("//div[@title='É uma referência aos bens e direitos que podem ser convertidos em dinheiro em curto prazo.']"));
-	        vlrRetorno = e11.findElement(By.className("value")).getText();
+			 WebElement e11 = driver.findElement(By.xpath("//span[text()='Patrimônio Líquido']"));
+			 vlrRetorno = e11.findElement(By.xpath("./following-sibling::span[@class='value']/div[@class='simple-value']")).getText().trim();
 	        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -179,12 +182,31 @@ public class investidor10 {
 		return vlrRetorno;
 	}
 	
+//	public static String PAYOUT( ) {
+//		System.out.println("investidor10 - Buscando PAYOUT ");
+//		String vlrRetorno = "null";
+//		try {			
+//			 WebElement e11 = driver.findElement(By.xpath("//span[text()='PAYOUT']/following-sibling::div/span"));
+//
+//	            // Obter o texto interno do elemento de valor
+//	            vlrRetorno = e11.getText().trim();
+//	        System.out.println(vlrRetorno);
+//		} catch(Exception e) {
+//			System.out.println(e.toString());
+//		
+//		}
+//
+//		return vlrRetorno;
+//	}
+	
 	public static String VlrMercado( ) {
 		System.out.println("investidor10 - Buscando Valor Mercado ");
 		String vlrRetorno = "null";
 		try {
-			 WebElement e11 = driver.findElement(By.xpath("//div[@title='O valor da ação multiplicado pelo número de ações existentes']"));
-		     vlrRetorno = e11.findElement(By.className("value")).getText();
+			WebElement e11 = driver.findElement(By.xpath("//span[text()='Valor de mercado']"));
+
+            // Obter o valor diretamente do próximo elemento <div> com a classe "simple-value"
+			vlrRetorno = e11.findElement(By.xpath("./following-sibling::span[@class='value']/div[@class='simple-value']")).getText().trim();
 		     System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
