@@ -10,12 +10,12 @@ public class App
     {
         System.out.println( "Iniciando Busca de Informações!" );
         
-//       ConexaoSqlite.adicionarDados("ABCB4");
-//      ConexaoSqlite.adicionarDados("AERI3");
-//     ConexaoSqlite.adicionarDados("B3SA3");
-//     ConexaoSqlite.adicionarDados("BBDC3");
-//     ConexaoSqlite.adicionarDados("BBSE3");
-//     ConexaoSqlite.adicionarDados("BEES3");
+     //   ConexaoSqlite.adicionarDados("ABCB4");
+        	//ConexaoSqlite.adicionarDados("AERI3");
+//        ConexaoSqlite.adicionarDados("B3SA3");
+//        ConexaoSqlite.adicionarDados("BBDC3");
+//        ConexaoSqlite.adicionarDados("BBSE3");
+//        ConexaoSqlite.adicionarDados("BEES3");
 //        ConexaoSqlite.adicionarDados("BHIA3");
 //        ConexaoSqlite.adicionarDados("BMGB4");
 //        ConexaoSqlite.adicionarDados("BRAP3");
@@ -91,21 +91,21 @@ public class App
         	
 	        System.out.println("Preco Encontrado: " + investidor10.Preco());
 	        
-	        System.out.println("Preco Encontrado: " + investidor10.PVP());
+	        System.out.println("PVP Encontrado: " + investidor10.PVP());
 	        
-	        System.out.println("Preco Encontrado: " + investidor10.LiquidezDiaria());
+	        System.out.println("LiquidezDiaria Encontrado: " + investidor10.LiquidezDiaria());
 	       
-	        System.out.println("Preco Encontrado: " + investidor10.DY());
+	        System.out.println("DY Encontrado: " + investidor10.DY());
 	        
-	        System.out.println("Preco Encontrado: " + investidor10.ROE());
+	        System.out.println("ROE Encontrado: " + investidor10.ROE());
 	        
-	        System.out.println("Preco Encontrado: " + investidor10.PL());
+	        System.out.println("PL Encontrado: " + investidor10.PL());
 	        
-	        System.out.println("Preco Encontrado: " + investidor10.Patrimonio_Liq());
+	        System.out.println("Patrimonio_Liq Encontrado: " + investidor10.Patrimonio_Liq());
 	        
-	        //System.out.println("Preco Encontrado: " + investidor10.PAYOUT());
+	        System.out.println("PAYOUT Encontrado: " + investidor10.PAYOUT());
 	        
-	        System.out.println("Preco Encontrado: " + investidor10.VlrMercado());
+	        System.out.println("VlrMercado Encontrado: " + investidor10.VlrMercado());
 	        
 	        
 	        
@@ -114,22 +114,24 @@ public class App
         }
     }
     
- public static void PrintarFundamentus() {
+    public static void PrintarFundamentus() {
     	
-    	boolean driverOk = Fundamentus.DriverInicializar("");
+    	boolean driverOk = Fundamentus.DriverInicializar();
         System.out.println("Fundamentus - Inicializando driver: " + driverOk);
         
         if (driverOk) {
         	
 	        System.out.println("Preco Encontrado: " + Fundamentus.Preco());
 	        
-        System.out.println("Preco Encontrado: " + Fundamentus.PVP());
+	        System.out.println("Preco Encontrado: " + Fundamentus.PVP());
 //	        
 //	        System.out.println("Preco Encontrado: " + Fundamentus.LiquidezDiaria());
 //	       
-//	        System.out.println("Preco Encontrado: " + Fundamentus.DY());
-//	        
+//            System.out.println("Preco Encontrado: " + Fundamentus.DY());
+////	        
 //	        System.out.println("Preco Encontrado: " + Fundamentus.ROE());
+////	        
+//	        System.out.println("Preco Encontrado: " + Fundamentus.Ev_Ebitda());
 //	        
 //	        System.out.println("Preco Encontrado: " + Fundamentus.PL());
 //	        

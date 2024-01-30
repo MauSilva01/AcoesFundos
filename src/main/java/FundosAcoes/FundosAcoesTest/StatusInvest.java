@@ -184,7 +184,7 @@ public class StatusInvest {
 		try {
 	        WebElement e11 = driver.findElement(By.xpath("//div[@title='Dá uma ideia do quanto o mercado está disposto a pagar pelos lucros da empresa.']"));
 	        vlrRetorno = e11.findElement(By.className("value")).getText();
-	        System.out.println(vlrRetorno);
+	        
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		

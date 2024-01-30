@@ -60,8 +60,12 @@ public class investidor10 {
 		System.out.println("investidor10 - Buscando P/VP ");
 		String vlrRetorno = "null";
 		try {
-			WebElement e11 = driver.findElement(By.xpath("//div[@class='_card vp']"));          
-            vlrRetorno = e11.getText().trim();
+			WebElement e11 = driver.findElement(By.xpath("//span[text()='P/VP']"));
+			WebElement e12 = e11.findElement(By.xpath(".."));
+			WebElement e13 = e12.findElement(By.xpath(".."));
+			WebElement e14 = e13.findElement(By.xpath(".."));
+			WebElement e15 = e14.findElements(By.xpath("//div[@class='_card-body']")).get(3);
+			vlrRetorno = e15.getText().trim();
 	        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -92,8 +96,12 @@ public class investidor10 {
 		System.out.println("investidor10 - Buscando DY ");
 		String vlrRetorno = "null";
 		try {
-			WebElement e11 = driver.findElement(By.xpath("//div[@class='_card dy']"));
-			vlrRetorno = e11.getText().trim();
+			WebElement e11 = driver.findElement(By.xpath("//span[text()='DY']"));
+			WebElement e12 = e11.findElement(By.xpath(".."));
+			WebElement e13 = e12.findElement(By.xpath(".."));
+			WebElement e14 = e13.findElement(By.xpath(".."));
+			WebElement e15 = e14.findElements(By.xpath("//div[@class='_card-body']")).get(4);
+			vlrRetorno = e15.getText().trim();
 	        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -108,7 +116,7 @@ public class investidor10 {
 		String vlrRetorno = "null";
 		try {
 			WebElement e11 = driver.findElement(By.className("cell")); 
-	        WebElement e12 = e11.findElement(By.xpath("//div[@class='value d-flex justify-content-between align-items-center']"));
+	        WebElement e12 = e11.findElement(By.xpath("//span[text()='ROE ']"));
 	        WebElement e13 = e12.findElement(By.xpath(".."));
 	        vlrRetorno = e13.findElement(By.className("value")).getText();		
 	        } catch(Exception e) {
@@ -138,9 +146,12 @@ public class investidor10 {
 		System.out.println("investidor10 - Buscando ev_ebitda ");
 		String vlrRetorno = "null";
 		try {
-	        WebElement e11 = driver.findElement(By.xpath("//div[@title='O EV (Enterprise Value ou Valor da Firma), indica quanto custaria para comprar todos os ativos da companhia, descontando o caixa. Este indicador mostra quanto tempo levaria para o valor calculado no EBITDA pagar o investimento feito para compra-la.']"));
-	        vlrRetorno = e11.findElement(By.className("value")).getText();
-	        System.out.println(vlrRetorno);
+			WebElement e11 = driver.findElement(By.className("cell")); 
+			WebElement e12 = e11.findElement(By.xpath("//span[text()='EV/EBIT ']"));
+			WebElement e13 = e12.findElement(By.xpath(".."));
+			WebElement e14 = e13.findElements(By.xpath("//div[@class='value d-flex justify-content-between align-items-center']")).get(9);
+			vlrRetorno = e14.getText().trim();
+			System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		
@@ -154,7 +165,7 @@ public class investidor10 {
 		String vlrRetorno = "null";
 		try {
 			
-			 WebElement e11 = driver.findElement(By.className("cell")); 
+			 	WebElement e11 = driver.findElement(By.className("cell")); 
 		        WebElement e12 = e11.findElement(By.xpath("//div[@class='value d-flex justify-content-between align-items-center']"));
 		        WebElement e13 = e12.findElement(By.xpath(".."));
 		        vlrRetorno = e13.findElement(By.className("value")).getText();		
@@ -182,22 +193,23 @@ public class investidor10 {
 		return vlrRetorno;
 	}
 	
-//	public static String PAYOUT( ) {
-//		System.out.println("investidor10 - Buscando PAYOUT ");
-//		String vlrRetorno = "null";
-//		try {			
-//			 WebElement e11 = driver.findElement(By.xpath("//span[text()='PAYOUT']/following-sibling::div/span"));
-//
-//	            // Obter o texto interno do elemento de valor
-//	            vlrRetorno = e11.getText().trim();
-//	        System.out.println(vlrRetorno);
-//		} catch(Exception e) {
-//			System.out.println(e.toString());
-//		
-//		}
-//
-//		return vlrRetorno;
-//	}
+	public static String PAYOUT( ) {
+		System.out.println("investidor10 - Buscando PAYOUT ");
+		String vlrRetorno = "null";
+		try {			
+			WebElement e11 = driver.findElement(By.className("cell")); 
+			WebElement e12 = e11.findElement(By.xpath("//span[text()='PAYOUT ']"));
+			WebElement e13 = e12.findElement(By.xpath(".."));
+			WebElement e14 = e13.findElements(By.xpath("//div[@class='value d-flex justify-content-between align-items-center']")).get(4);
+			 vlrRetorno = e14.getText().trim();
+	        System.out.println(vlrRetorno);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		
+		}
+
+		return vlrRetorno;
+	}
 	
 	public static String VlrMercado( ) {
 		System.out.println("investidor10 - Buscando Valor Mercado ");
