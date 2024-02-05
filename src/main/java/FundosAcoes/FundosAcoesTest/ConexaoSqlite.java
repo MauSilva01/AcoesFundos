@@ -11,10 +11,11 @@ public class ConexaoSqlite {
 
 	public static void adicionarDados(String sPapel) {
 
-		//DadosStatusinvest(sPapel);
+		DadosStatusinvest(sPapel);
 		
 		Dadosinvestidor10(sPapel);
 		
+		DadosFundamentus(sPapel);
 		
 	}
 	 
@@ -23,7 +24,7 @@ public class ConexaoSqlite {
 		 Connection conn = null;
 		    try {
 		      // Cria a conexão com o banco de dados
-		      conn = DriverManager.getConnection("jdbc:sqlite:C:\\PROGRAMAS\\fundosAcoes\\fundosAcoes\\BD\\Cotacoes.db");
+		      conn = DriverManager.getConnection("jdbc:sqlite:C:\\Programas\\FundosAçoes\\fundosAcoes\\BD\\Cotacoes.db");
 		      
 		      System.out.println("Conexão com o banco de dados SQL Server estabelecida com sucesso!");
 		  
@@ -70,9 +71,9 @@ public class ConexaoSqlite {
 		 
 		 Connection conn = ObterConexaoBanco();
 		 
-		 boolean driverOk = StatusInvest.DriverInicializar(sPapel);
+		 boolean driverOk1 = StatusInvest.DriverInicializar(sPapel);
 		 
-		 if (driverOk) { 
+		 if (driverOk1) { 
 				String codigo = sPapel;
 				String origem = "statusinvest";
 				String preco = StatusInvest.Preco();
@@ -87,7 +88,7 @@ public class ConexaoSqlite {
 				String payout = "nulo";
 				String vlrMercado = StatusInvest.VlrMercado();
 					 
-				inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl,  patrimonio_liq, payout, vlrMercado);
+				inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, payout, patrimonio_liq,  vlrMercado);
 				
 				
 	        }
@@ -112,10 +113,10 @@ public class ConexaoSqlite {
 				String roe = investidor10.ROE();
 				String div_ebitda = "nulo";
 				String ev_ebitda = investidor10.Ev_Ebitda();
-				String pl = investidor10.PL();
+				String pl = investidor10.PL().replace("R$","");
 				String payout = investidor10.PAYOUT();
-				String patrimonio_liq = investidor10.Patrimonio_Liq();
-				String vlrMercado = investidor10.VlrMercado();
+				String patrimonio_liq = investidor10.Patrimonio_Liq().replace("R$","");;
+				String vlrMercado = investidor10.VlrMercado().replace("R$","");;
 					 
 				inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, payout, patrimonio_liq, vlrMercado);
 				
@@ -123,5 +124,36 @@ public class ConexaoSqlite {
 	        }
 	        
 	 }
+ 
+ 
+public static void DadosFundamentus(String sPapel) {
+	 
+	 Connection conn = ObterConexaoBanco();
+	 
+	 boolean driverOk1 = Fundamentus.DriverInicializar(sPapel);
+        
+		
+        
+        if (driverOk1) { 
+			String codigo = sPapel;
+			String origem = "Fundamentus";
+			String preco = Fundamentus.Preco().replace("R$","");
+			String pvp = Fundamentus.PVP();
+			String liquidezDiaria = Fundamentus.LiquidezDiaria();   
+			String dy = Fundamentus.DY();
+			String roe = Fundamentus.ROE();
+			String div_ebitda = "-";
+			String ev_ebitda = Fundamentus.Ev_Ebitda();
+			String pl = Fundamentus.PL();
+			String payout = "-";
+			String patrimonio_liq = Fundamentus.Patrimonio_Liq();
+			String vlrMercado = Fundamentus.VlrMercado();
+				 
+			inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, payout, patrimonio_liq, vlrMercado);
+			
+			
+        }
+        
+ }
 }
 

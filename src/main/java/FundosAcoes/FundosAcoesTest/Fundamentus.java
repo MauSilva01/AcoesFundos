@@ -9,9 +9,9 @@ public class Fundamentus {
 
 private static WebDriver driver = new ChromeDriver();
 
-	public static boolean DriverInicializar() {
+	public static boolean DriverInicializar(String sPapel) {
 		try {		
-			String url = "https://www.fundamentus.com.br/detalhes.php?papel=ABCB4";
+			String url = "https://www.fundamentus.com.br/detalhes.php?papel=" + sPapel;
 			driver.get(url);
 			System.out.println("Driver Fundamentus inicializado.");			
 		} catch(Exception e) {
@@ -80,7 +80,7 @@ private static WebDriver driver = new ChromeDriver();
 			 WebElement e11 = driver.findElement(By.xpath("//span[text()='Vol $ méd (2m)']"));
 			 WebElement e12 = e11.findElement(By.xpath(".."));
 			 WebElement e13 = e12.findElement(By.xpath(".."));
-			 WebElement e14 = e13.findElements(By.xpath("//span[@class='txt']")).get(37);
+			 WebElement e14 = e13.findElements(By.xpath("//td[@class='data']")).get(7);
 	        vlrRetorno = e14.getText().trim();
 	       
 		} catch(Exception e) {
@@ -96,12 +96,10 @@ private static WebDriver driver = new ChromeDriver();
 		String vlrRetorno = "null";
 		try {
 			
-			 WebElement e11 = driver.findElement(By.xpath("//span[text()='Div. Yield']"));
-			 WebElement e12 = e11.findElement(By.xpath(".."));
-			 WebElement e13 = e12.findElement(By.xpath(".."));
-			 WebElement e14 = e13.findElements(By.xpath("//span[@class='txt']")).get(67);
-	        vlrRetorno = e14.getText().trim();
-	       
+			WebElement e11 = driver.findElement(By.xpath("//span[text()='Div. Yield']"));
+			WebElement e12 = e11.findElement(By.xpath("../../..")); // Ajuste a quantidade de ".." conforme a hierarquia da sua estrutura HTML
+			WebElement e15 = e12.findElements(By.xpath(".//td[@class='data']")).get(6); // Subtraia 1 do índice para obter o quinto elemento
+			 vlrRetorno = e15.getText().trim();
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		
@@ -116,10 +114,9 @@ private static WebDriver driver = new ChromeDriver();
 		try {
 			
 			 WebElement e11 = driver.findElement(By.xpath("//span[text()='ROE']"));
-			 WebElement e12 = e11.findElement(By.xpath(".."));
-			 WebElement e13 = e12.findElement(By.xpath(".."));
-			 WebElement e14 = e13.findElements(By.xpath("//span[@class='txt']")).get(69);
-	        vlrRetorno = e14.getText().trim();
+			 WebElement e12 = e11.findElement(By.xpath("../../.."));			 
+			 WebElement e13 = e12.findElements(By.xpath(".//td[@class='data']")).get(7);
+	        vlrRetorno = e13.getText().trim();
 	       
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -134,11 +131,10 @@ private static WebDriver driver = new ChromeDriver();
 		String vlrRetorno = "null";
 		try {
 			
-			 WebElement e11 = driver.findElement(By.xpath("//span[text()='ROE']"));
-			 WebElement e12 = e11.findElement(By.xpath(".."));
-			 WebElement e13 = e12.findElement(By.xpath(".."));
-			 WebElement e14 = e13.findElements(By.xpath("//span[@class='txt']")).get(72);
-	        vlrRetorno = e14.getText().trim();
+			 WebElement e11 = driver.findElement(By.xpath("//span[text()='EV / EBITDA']"));
+			 WebElement e12 = e11.findElement(By.xpath("../../.."));			
+			 WebElement e13 = e12.findElements(By.xpath(".//td[@class='data']")).get(9);
+	        vlrRetorno = e13.getText().trim();
 	       
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -153,11 +149,10 @@ private static WebDriver driver = new ChromeDriver();
 		String vlrRetorno = "null";
 		try {
 			
-			 WebElement e11 = driver.findElement(By.xpath("//span[text()='Patrim. Líq']"));
-			 WebElement e12 = e11.findElement(By.xpath(".."));
-			 WebElement e13 = e12.findElement(By.xpath(".."));
-			 WebElement e14 = e13.findElements(By.xpath("//span[@class='txt']")).get(93);
-	        vlrRetorno = e14.getText().trim();
+			 WebElement e11 = driver.findElement(By.xpath("//span[text()='P/L']"));
+			 WebElement e12 = e11.findElement(By.xpath("../../.."));		 
+			 WebElement e13 = e12.findElements(By.xpath(".//td[@class='data w2']")).get(0);
+	        vlrRetorno = e13.getText().trim();
 	       
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -167,5 +162,39 @@ private static WebDriver driver = new ChromeDriver();
 		return vlrRetorno;
 	}
 	
+	public static String Patrimonio_Liq( ) {
+		System.out.println("fundamentus - Buscando ebit ");
+		String vlrRetorno = "null";
+		try {
+			
+			 WebElement e11 = driver.findElement(By.xpath("//span[text()='Patrim. Líq']"));
+			 WebElement e12 = e11.findElement(By.xpath("../../.."));		 
+			 WebElement e13 = e12.findElements(By.xpath(".//td[@class='data']")).get(1);
+	        vlrRetorno = e13.getText().trim();
+	       
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		
+		}
+
+		return vlrRetorno;
+	}
 	
+	public static String VlrMercado( ) {
+		System.out.println("fundamentus - Buscando ebit ");
+		String vlrRetorno = "null";
+		try {
+			
+			 WebElement e11 = driver.findElement(By.xpath("//span[text()='Valor de mercado']"));
+			 WebElement e12 = e11.findElement(By.xpath("../../.."));		 
+			 WebElement e13 = e12.findElements(By.xpath(".//td[@class='data w3']")).get(0);
+	        vlrRetorno = e13.getText().trim();
+	       
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		
+		}
+
+		return vlrRetorno;
+	}
 }
