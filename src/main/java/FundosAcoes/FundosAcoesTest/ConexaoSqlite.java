@@ -8,19 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConexaoSqlite {
-
-	public static void adicionarDados(String sPapel) {
-
-		DadosStatusinvest(sPapel);
-		
-		Dadosinvestidor10(sPapel);
-		
-		DadosFundamentus(sPapel);
-		
-	}
-	 
 	
-	 public static Connection ObterConexaoBanco() {
+	
+	 private static Connection ObterConexaoBanco() {
 		 Connection conn = null;
 		    try {
 		      // Cria a conexão com o banco de dados
@@ -35,9 +25,11 @@ public class ConexaoSqlite {
 			return conn;
 	 }
 	 
-	 private static void inserirNoBanco(Connection conn, String codigo, String origem,  String preco, String pvp, String liquidezDiaria, String dy, String roe, String div_ebitda, String ev_ebitda, String pl, String payout,String patrimonio_liq, String vlrMercado) {
+	 private static void inserirNoBanco( String codigo, String origem,  String preco, String pvp, String liquidezDiaria, String dy, String roe, String div_ebitda, String ev_ebitda, String pl, String payout,String patrimonio_liq, String vlrMercado) {
 	        try {
      
+	        	Connection conn = ConexaoSqlite.ObterConexaoBanco();
+	        	
 	            String query = "INSERT INTO Cotacoes_acoes (DATA, CODIGO, ORIGEM, PRECO, P_VP, LIQUIDEZ_DIARIA, DY_MED_PERC, ROE, DIV_EBITIDA, EV_EBITIDA, PATRIMONIO_LUCRO, PL,PAYOUT, VALOR_MERCADO) VALUES ( DATETIME('now' , 'localtime'),?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	            PreparedStatement preparedStatement = conn.prepareStatement(query);
 	            preparedStatement.setString(1, codigo);
@@ -67,93 +59,22 @@ public class ConexaoSqlite {
 	        }
 	    }
 	 
-	 public static void DadosStatusinvest(String sPapel) {
+	 public static void SalvarPapelCotacao(PapelCotacao papel) {
 		 
-		 Connection conn = ObterConexaoBanco();
-		 
-		 boolean driverOk1 = StatusInvest.DriverInicializar(sPapel);
-		 
-		 if (driverOk1) { 
-				String codigo = sPapel;
-				String origem = "statusinvest";
-				String preco = StatusInvest.Preco();
-				String pvp = StatusInvest.PVP();
-				String liquidezDiaria = StatusInvest.LiquidezDiaria();   
-				String dy = StatusInvest.DY();
-				String roe = StatusInvest.ROE();
-				String div_ebitda = StatusInvest.Div_Ebitda();
-				String ev_ebitda = StatusInvest.Ev_Ebitda();
-				String pl = StatusInvest.PL();				
-				String patrimonio_liq = StatusInvest.Patrimonio_Liq();
-				String payout = "nulo";
-				String vlrMercado = StatusInvest.VlrMercado();
-					 
-				inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, payout, patrimonio_liq,  vlrMercado);
-				
-				
-	        }
-	        
-	 }
-	 
- public static void Dadosinvestidor10(String sPapel) {
-		 
-		 Connection conn = ObterConexaoBanco();
-		 
-		 boolean driverOk1 = investidor10.DriverInicializar(sPapel);
-	        
-			
-	        
-	        if (driverOk1) { 
-				String codigo = sPapel;
-				String origem = "investidor10";
-				String preco = investidor10.Preco().replace("R$","");
-				String pvp = investidor10.PVP();
-				String liquidezDiaria = investidor10.LiquidezDiaria();   
-				String dy = investidor10.DY();
-				String roe = investidor10.ROE();
-				String div_ebitda = "nulo";
-				String ev_ebitda = investidor10.Ev_Ebitda();
-				String pl = investidor10.PL().replace("R$","");
-				String payout = investidor10.PAYOUT();
-				String patrimonio_liq = investidor10.Patrimonio_Liq().replace("R$","");;
-				String vlrMercado = investidor10.VlrMercado().replace("R$","");;
-					 
-				inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, payout, patrimonio_liq, vlrMercado);
-				
-				
-	        }
-	        
-	 }
+	 ConexaoSqlite.inserirNoBanco(
+		papel.Codigo,
+		papel.SiteOrigem,
+		papel.Preco,
+		papel.PVP,
+		papel.LiquidezDiaria,
+		papel.DividendYield,
+		papel.ROE,
+		papel.DividaSobreEbitda,
+		papel.EvaluationSobreEbitda,
+		papel.PatriminoSobreLucro,
+		papel.Payout,
+		papel.PatrimonioLiquido,
+		papel.ValorMercado);
  
- 
-public static void DadosFundamentus(String sPapel) {
-	 
-	 Connection conn = ObterConexaoBanco();
-	 
-	 boolean driverOk1 = Fundamentus.DriverInicializar(sPapel);
-        
-		
-        
-        if (driverOk1) { 
-			String codigo = sPapel;
-			String origem = "Fundamentus";
-			String preco = Fundamentus.Preco().replace("R$","");
-			String pvp = Fundamentus.PVP();
-			String liquidezDiaria = Fundamentus.LiquidezDiaria();   
-			String dy = Fundamentus.DY();
-			String roe = Fundamentus.ROE();
-			String div_ebitda = "-";
-			String ev_ebitda = Fundamentus.Ev_Ebitda();
-			String pl = Fundamentus.PL();
-			String payout = "-";
-			String patrimonio_liq = Fundamentus.Patrimonio_Liq();
-			String vlrMercado = Fundamentus.VlrMercado();
-				 
-			inserirNoBanco(conn , codigo, origem, preco, pvp, liquidezDiaria, dy, roe, div_ebitda, ev_ebitda, pl, payout, patrimonio_liq, vlrMercado);
-			
-			
-        }
-        
- }
+	 }
 }
-
