@@ -1,2 +1,6 @@
-FundosAcoes\FundosAcoesTest\App.class
-FundosAcoes\FundosAcoesTest\PapelCotacao.class
+bancodados\ConexaoSqlite.class
+principal\FundosAcoes.class
+navegadores\SiteStatusInvest.class
+models\PapelCotacao.class
+navegadores\SiteFundamentus.class
+navegadores\SiteInvestidor10.class
