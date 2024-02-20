@@ -22,21 +22,45 @@ public class FundosAcoes {
         SiteStatusInvest sitestatusinvest = new SiteStatusInvest();   
         SiteFundamentus sitefundamentus = new SiteFundamentus();
         SiteInvestidor10 siteinvestidor10 =new SiteInvestidor10();
-        List<String> papeis = Arrays.asList("ABCB4");
+        List<String> papeis = new ArrayList<>();
         
         //Lista de papeis
-        papeis.add("PETR3");
+        papeis.add("ABCB4");
+        papeis.add("AERI3");
+        papeis.add("B3SA3");
+        papeis.add("BBDC3");
+        papeis.add("BBSE3");
+        papeis.add("BEES3");
+        papeis.add("BMGB4");
+        papeis.add("BRAP3");
+        papeis.add("CIEL3");
+        papeis.add("CMIG4");
+        papeis.add("CSMG3");
+        papeis.add("CXSE3");
+        papeis.add("ITSA4");
+        papeis.add("ITUB3");
+        papeis.add("KLBN4");
+//        papeis.add("MGLU1");
+        papeis.add("MGLU3");
+        papeis.add("NGRD3");
+        papeis.add("OIBR3");
         papeis.add("PETR4");
-        papeis.add("");
-        
+        papeis.add("PETR3");
+        papeis.add("SANB4");
+        papeis.add("SAPR4");
+        papeis.add("TAEE4");
+        papeis.add("TRPL4");        
+     
         
         for (String papel : papeis) {        
             try{
                 sitestatusinvest.InicializarCotacao(papel);
+                Thread.sleep(15000);
                 sitefundamentus.InicializarCotacao(papel);
+                Thread.sleep(10000);
                 siteinvestidor10.InicializarCotacao(papel);
-                   
-            }catch(Exception e){
+                Thread.sleep(15000);   
+            }catch(InterruptedException e){
                 System.out.println(e.toString());
             }
                   

@@ -21,6 +21,8 @@ public class SiteFundamentus {
 
 	public boolean InicializarCotacao(String sPapel) {
 		try {
+                    
+                    System.out.println("Iniciando Cotacao do " + sPapel);
 			
 			this.papel = new PapelCotacao();		
 			this.papel.Codigo = sPapel;
