@@ -22,6 +22,12 @@ public class SiteStatusInvest {
     private PapelCotacao papel;
     
     public boolean InicializarCotacao(String sPapel) {
+        return InicializarCotacao( sPapel, 0);
+    }
+    
+    public boolean InicializarCotacao(String sPapel, int sTipo ) {
+        
+        String url = "";
 	try {
             //Inicializando o papel
             this.papel = new PapelCotacao();			
@@ -29,22 +35,36 @@ public class SiteStatusInvest {
             this.papel.SiteOrigem = "statusinvest";
             
             //Inicializando o driver
-            String url = "https://statusinvest.com.br/acoes/" + sPapel;
+            if (sTipo == 0)
+                url = "https://statusinvest.com.br/acoes/" + sPapel;
+            else
+                url = "https://statusinvest.com.br/fundos-imobiliarios/" + sPapel;   
+            
             driver = new ChromeDriver();
             driver.get(url);
 
-            //Buscando os dados
-            this.DividaSobreEbitda();
+            //Buscando os dados comuns
+            this.Preco();
             this.DividendYield();
-            this.Preco();
-            this.EvaluationSobreEbitda();    
             this.LiquidezDiaria();
-            this.PatrimonioLiquido();    
-            this.PatriminoSobreLucro();
-            this.Preco();
-            this.PVP();
-            this.ROE();
-            this.ValorMercado();
+            this.PVP();         
+            
+            //Acoes
+            if (sTipo == 0) {
+                this.DividaSobreEbitda();          
+                this.EvaluationSobreEbitda();    
+                this.PatrimonioLiquido();    
+                this.PatriminoSobreLucro();
+                this.ROE();
+                this.ValorMercado();               
+            }         
+            
+            //fundos 
+            if (sTipo == 1) {
+                
+                //Vancancia
+                //Qtde de Imoveis
+            }
 
             //Salvando papeis
             ConexaoSqlite.SalvarPapelCotacao(papel);
@@ -79,8 +99,9 @@ public class SiteStatusInvest {
     	System.out.println("StatusInvest - Buscando P/VP ");
     	String vlrRetorno = "null";
     	try {
-    		WebElement e11 = driver.findElement(By.xpath("//div[@title='Facilita a análise e comparação da relação do preço de negociação de um ativo com seu VPA.']"));       
-    		vlrRetorno = e11.findElement(By.className("value")).getText();
+    		WebElement e11 = driver.findElement(By.xpath("//h3[text()='P/VP']")); 
+                WebElement e12 = e11.findElement(By.xpath("../../.."));
+    		vlrRetorno = e12.findElement(By.className("value")).getText();
     		System.out.println(vlrRetorno);
     	} catch(Exception e) {
     		System.out.println(e.toString());	
@@ -170,7 +191,7 @@ public class SiteStatusInvest {
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Dá uma ideia do quanto o mercado está disposto a pagar pelos lucros da empresa.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
-        
+                System.out.println(vlrRetorno);
     	} catch(Exception e) {
     		System.out.println(e.toString());
 	

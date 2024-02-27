@@ -28,6 +28,8 @@ public class PapelCotacao {
     //Especifico de Fundos de Investimentos
     public String FII_QuantidadeImoveis = "";
     public String FII_Vacancia = "";
+    
+    
  
     
     public String formatarValorDB(String sValor) {
