@@ -32,12 +32,20 @@ public class ConexaoSqlite {
 			return conn;
 	 }
 	 
+<<<<<<< HEAD
 	 private static void inserirNoBanco( String codigo, String origem,  String preco, String pvp, String liquidezDiaria, String dy, String roe, String div_ebitda, String ev_ebitda, String pl, String payout,String patrimonio_liq, String vlrMercado, String FII_QuantidadeImoveis , String FII_Vacancia) {
+=======
+	 private static void inserirNoBanco( String codigo, String origem,  String preco, String pvp, String liquidezDiaria, String dy, String roe, String div_ebitda, String ev_ebitda, String pl, String payout,String patrimonio_liq, String vlrMercado) {
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 	        try {
      
 	        	Connection conn = ConexaoSqlite.ObterConexaoBanco();
 	        	
+<<<<<<< HEAD
 	            String query = "INSERT INTO Cotacoes_acoes (DATA, CODIGO, ORIGEM, PRECO, P_VP, LIQUIDEZ_DIARIA, DY_MED_PERC, ROE, DIV_EBITIDA, EV_EBITIDA, PATRIMONIO_LUCRO, PL,PAYOUT, VALOR_MERCADO, FII_QTDE_IMOVEIS, FII_VACANCIA) VALUES ( DATETIME('now' , 'localtime'),?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+=======
+	            String query = "INSERT INTO Cotacoes_acoes (DATA, CODIGO, ORIGEM, PRECO, P_VP, LIQUIDEZ_DIARIA, DY_MED_PERC, ROE, DIV_EBITIDA, EV_EBITIDA, PATRIMONIO_LUCRO, PL,PAYOUT, VALOR_MERCADO) VALUES ( DATETIME('now' , 'localtime'),?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 	            PreparedStatement preparedStatement = conn.prepareStatement(query);
 	            preparedStatement.setString(1, codigo);
 	            preparedStatement.setString(2, origem);
@@ -52,12 +60,15 @@ public class ConexaoSqlite {
 	            preparedStatement.setString(11, patrimonio_liq);
 	            preparedStatement.setString(12, payout);
 	            preparedStatement.setString(13, vlrMercado);
+<<<<<<< HEAD
                     preparedStatement.setString(14, FII_QuantidadeImoveis);
                     preparedStatement.setString(15, FII_Vacancia);
                     
                     
             
                     
+=======
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 	            
 	            // Adicione os demais campos e valores...
 
@@ -86,10 +97,14 @@ public class ConexaoSqlite {
 		papel.PatriminoSobreLucro,
 		papel.Payout,
 		papel.PatrimonioLiquido,
+<<<<<<< HEAD
 		papel.ValorMercado,
                 papel.FII_QuantidadeImoveis,
                 papel.FII_Vacancia
                 );
+=======
+		papel.ValorMercado);
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
  
 	 }
 }

@@ -22,12 +22,15 @@ public class SiteStatusInvest {
     private PapelCotacao papel;
     
     public boolean InicializarCotacao(String sPapel) {
+<<<<<<< HEAD
         return InicializarCotacao( sPapel, 0);
     }
     
     public boolean InicializarCotacao(String sPapel, int sTipo ) {
         
         String url = "";
+=======
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 	try {
             //Inicializando o papel
             this.papel = new PapelCotacao();			
@@ -35,6 +38,7 @@ public class SiteStatusInvest {
             this.papel.SiteOrigem = "statusinvest";
             
             //Inicializando o driver
+<<<<<<< HEAD
             if (sTipo == 0)
                 url = "https://statusinvest.com.br/acoes/" + sPapel;
             else
@@ -65,6 +69,24 @@ public class SiteStatusInvest {
                 //Vancancia
                 //Qtde de Imoveis
             }
+=======
+            String url = "https://statusinvest.com.br/acoes/" + sPapel;
+            driver = new ChromeDriver();
+            driver.get(url);
+
+            //Buscando os dados
+            this.DividaSobreEbitda();
+            this.DividendYield();
+            this.Preco();
+            this.EvaluationSobreEbitda();    
+            this.LiquidezDiaria();
+            this.PatrimonioLiquido();    
+            this.PatriminoSobreLucro();
+            this.Preco();
+            this.PVP();
+            this.ROE();
+            this.ValorMercado();
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 
             //Salvando papeis
             ConexaoSqlite.SalvarPapelCotacao(papel);
@@ -99,9 +121,14 @@ public class SiteStatusInvest {
     	System.out.println("StatusInvest - Buscando P/VP ");
     	String vlrRetorno = "null";
     	try {
+<<<<<<< HEAD
     		WebElement e11 = driver.findElement(By.xpath("//h3[text()='P/VP']")); 
                 WebElement e12 = e11.findElement(By.xpath("../../.."));
     		vlrRetorno = e12.findElement(By.className("value")).getText();
+=======
+    		WebElement e11 = driver.findElement(By.xpath("//div[@title='Facilita a análise e comparação da relação do preço de negociação de um ativo com seu VPA.']"));       
+    		vlrRetorno = e11.findElement(By.className("value")).getText();
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
     		System.out.println(vlrRetorno);
     	} catch(Exception e) {
     		System.out.println(e.toString());	
@@ -191,7 +218,11 @@ public class SiteStatusInvest {
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Dá uma ideia do quanto o mercado está disposto a pagar pelos lucros da empresa.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
+<<<<<<< HEAD
                 System.out.println(vlrRetorno);
+=======
+        
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
     	} catch(Exception e) {
     		System.out.println(e.toString());
 	

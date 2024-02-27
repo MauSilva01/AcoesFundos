@@ -22,6 +22,7 @@ public class FundosAcoes {
         SiteStatusInvest sitestatusinvest = new SiteStatusInvest();   
         SiteFundamentus sitefundamentus = new SiteFundamentus();
         SiteInvestidor10 siteinvestidor10 =new SiteInvestidor10();
+<<<<<<< HEAD
         List<String> papeis = new ArrayList<>();
         List<String> fundos = new ArrayList<>();
         
@@ -54,21 +55,38 @@ public class FundosAcoes {
         
         fundos.add("IRDM11");
       
+=======
+        List<String> papeis = Arrays.asList("ABCB4");
+        
+        //Lista de papeis
+        papeis.add("PETR3");
+        papeis.add("PETR4");
+        papeis.add("");
+        
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
         
         for (String papel : papeis) {        
             try{
                 sitestatusinvest.InicializarCotacao(papel);
+<<<<<<< HEAD
                 Thread.sleep(15000);
 //               sitefundamentus.InicializarCotacao(papel);
 //               Thread.sleep(10000);
 //                siteinvestidor10.InicializarCotacao(papel);
 //                Thread.sleep(15000);   
             }catch(InterruptedException e){
+=======
+                sitefundamentus.InicializarCotacao(papel);
+                siteinvestidor10.InicializarCotacao(papel);
+                   
+            }catch(Exception e){
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
                 System.out.println(e.toString());
             }
                   
         }
        
+<<<<<<< HEAD
         for (String papel : fundos) {        
             try{
                 sitestatusinvest.InicializarCotacao(papel, 1);
@@ -82,6 +100,8 @@ public class FundosAcoes {
             }
                   
         }
+=======
+>>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
           
     
       
