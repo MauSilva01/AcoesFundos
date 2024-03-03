@@ -7,6 +7,7 @@ package navegadores;
 import bancodados.ConexaoSqlite;
 import models.PapelCotacao;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,9 +21,16 @@ public class SiteInvestidor10 {
 	
 	private final WebDriver driver = new ChromeDriver();
 	private PapelCotacao papel; 
+        
+       public boolean InicializarCotacao(String sPapel) {
+       
+           return InicializarCotacao(sPapel , 0);
+       }
 	
-	public boolean InicializarCotacao(String sPapel) {
+	public boolean InicializarCotacao(String sPapel, int sTipo) {
 
+               String url = "";
+               
 		try {
 			//Inicializando o Pàpel
 			this.papel = new PapelCotacao();
@@ -31,24 +39,52 @@ public class SiteInvestidor10 {
 			this.papel.Codigo = sPapel;
 			this.papel.SiteOrigem = "INVESTIDOR10";
 
-			String url = "https://investidor10.com.br/acoes/" + sPapel;
+                        if (sTipo == 0){
+                             url = "https://investidor10.com.br/acoes/" + sPapel;
+                        }else {
+                             url = "https://investidor10.com.br/fiis/" + sPapel;
+                        }
+			
 			driver.get(url);
 
 			//PegandoValores
-			this.DividaSobreEbitda();
-			this.DividendYield();
-			this.Preco();
-			this.EvaluationSobreEbitda();    
-			this.LiquidezDiaria();
-			this.PatrimonioLiquido();    
-			this.PatriminoSobreLucro();
-			this.Payout();
-			this.Preco();
-			this.PVP();
-			this.ROE();
-			this.ValorMercado();
-
+			
+			
+			   
+			
+			
+                        
+                        //buscando valores em comum
+                        this.Preco();
+                        
+                        this.PVP();
+                        
+                        
+                        
+                        //buscando açoes
+                        if (sTipo == 0){
+                            	
+                            this.EvaluationSobreEbitda();  
+                            this.PatriminoSobreLucro();
+                            this.Payout();		
+                            this.ROE();
+                            this.ValorMercado();
+                            this.DividendYield();
+                            this.LiquidezDiaria();
+                            this.PatrimonioLiquido(); 
+                        }
+                        
+                        //buscando fundos
+                        if (sTipo == 1){
+//                          this.FII_QuantidadeImoveis();
+                            this.FII_Vacancia();
+                            this.FII_DividendYield();
+                            this.FII_LiquidezDiaria();
+                            this.FII_PatrimonioLiquido();
+                        }
+                        
 			//Encerrando
+                        
 			
 
 			//Salvando Dados em Banco de Dados
@@ -70,23 +106,6 @@ public class SiteInvestidor10 {
 			System.out.println(e.toString());
 		}
 	}
-
-	private void DividaSobreEbitda() {
-		System.out.println("Site Investidor10 - Buscando Divida Sobre Ebitda. ");
-		String vlrRetorno = "";
-		try {
-			WebElement e11 = driver.findElement(By.className("cell")); 
-			WebElement e12 = e11.findElement(By.xpath("//span[text()='DÍVIDA LÍQUIDA / EBITDA ']"));
-			WebElement e13 = e12.findElement(By.xpath(".."));
-			WebElement e14 = e13.findElements(By.xpath("//div[@class='value d-flex justify-content-between align-items-center']")).get(23);
-			vlrRetorno = e14.getText().trim();
-			System.out.println(vlrRetorno);
-		} catch(Exception e) {
-			System.out.println(e.toString());
-	}
-	//Salva o preco
-    this.papel.DividaSobreEbitda = papel.formatarValorDB(vlrRetorno);            
-}
 
 	private void DividendYield() {
 		System.out.println("Site Investidor10 - Buscando DY ");
@@ -204,12 +223,10 @@ public class SiteInvestidor10 {
 		System.out.println("Site Investidor10 - Buscando Preco Sobre Valor Patrimonial -  P/VP.");
 		String vlrRetorno = "";
 		try {
-			WebElement e11 = driver.findElement(By.xpath("//span[text()='P/VP']"));
-			WebElement e12 = e11.findElement(By.xpath(".."));
-			WebElement e13 = e12.findElement(By.xpath(".."));
-			WebElement e14 = e13.findElement(By.xpath(".."));
-			WebElement e15 = e14.findElements(By.xpath("//div[@class='_card-body']")).get(3);
-			vlrRetorno = e15.getText().trim();
+			WebElement e11 = driver.findElement(By.xpath("//span[@title='P/VP']"));
+			WebElement e12 = e11.findElement(By.xpath("../../.."));
+			WebElement e13 = e12.findElement(By.xpath(".//div[@class='_card-body']"));
+			vlrRetorno = e13.getText().trim();
 			System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -225,7 +242,8 @@ public class SiteInvestidor10 {
 			WebElement e11 = driver.findElement(By.className("cell")); 
 			WebElement e12 = e11.findElement(By.xpath("//span[text()='ROE ']"));
 			WebElement e13 = e12.findElement(By.xpath(".."));
-			vlrRetorno = e13.findElement(By.className("value")).getText();		
+			vlrRetorno = e13.findElement(By.className("value")).getText();	
+                        System.out.println(vlrRetorno);
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		}
@@ -245,5 +263,68 @@ public class SiteInvestidor10 {
 		}
 		//Salva 
         this.papel.ValorMercado = papel.formatarValorDB(vlrRetorno);
+    }
+        
+        private void FII_Vacancia() {
+		System.out.println("Site Investidor10 - Buscando vacancia ");
+		String vlrRetorno = "";
+		try {
+			WebElement e11 = driver.findElement(By.xpath("//span[text()='VACÂNCIA']"));
+			 WebElement e12 = e11.findElement(By.xpath(".."));			
+			WebElement e13 = e12.findElement(By.xpath(".//div[@class='value']"));
+                        vlrRetorno = e13.getText().trim();
+			System.out.println(vlrRetorno);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
+		//Salva 
+        this.papel.FII_Vacancia = papel.formatarValorDB(vlrRetorno);
+    }
+        
+        private void FII_DividendYield() {
+		System.out.println("Site Investidor10 - Buscando FII dy ");
+		String vlrRetorno = "";
+		try {
+			WebElement e11 = driver.findElement(By.xpath("//span[@title='Dividend Yield']"));
+                        WebElement e12 = e11.findElement(By.xpath("../../.."));
+			vlrRetorno = e12.findElement(By.xpath(".//div[@class='_card-body']")).getText().trim();
+			System.out.println(vlrRetorno);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
+		//Salva 
+        this.papel.DividendYield = papel.formatarValorDB(vlrRetorno);
+    }
+        
+        private void FII_LiquidezDiaria() {
+		System.out.println("Site Investidor10 - Buscando FII liquidez diaria");
+		String vlrRetorno = "";
+		try {
+			WebElement e11 = driver.findElement(By.xpath("//span[@title='Liquidez Diária']"));
+                        WebElement e12 = e11.findElement(By.xpath("../../.."));
+			vlrRetorno = e12.findElement(By.xpath(".//div[@class='_card-body']")).getText().trim();
+			System.out.println(vlrRetorno);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
+		//Salva 
+        this.papel.LiquidezDiaria = papel.formatarValorDB(vlrRetorno);
+    }
+        private void FII_PatrimonioLiquido() {
+		System.out.println("Site Investidor10 - Buscando FII liquidez diaria");
+		String vlrRetorno = "";
+		try {
+                    WebElement e11 = driver.findElement(By.xpath("//span[text()='VALOR PATRIMONIAL']"));
+                    WebElement e12 = e11.findElement(By.xpath(".."));
+                    WebElement e13 = e12.findElement(By.xpath(".//div[@class='value']"));
+                        vlrRetorno = e13.getText().trim();
+			System.out.println(vlrRetorno);
+		} catch(NoSuchElementException e) {
+			System.out.println(e.toString());
+		}catch(Exception e) {
+                    System.out.println("Exceção ao buscar o valor patrimonial: " + e.toString());
+                }
+		//Salva 
+        this.papel.PatrimonioLiquido = papel.formatarValorDB(vlrRetorno);
     }
 }

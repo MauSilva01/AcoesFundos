@@ -21,7 +21,7 @@ public class ConexaoSqlite {
 		 Connection conn = null;
 		    try {
 		      // Cria a conexão com o banco de dados
-		      conn = DriverManager.getConnection("jdbc:sqlite:C:\\PROGRAMAS\\BancoDados\\Cotacoes.db");
+		      conn = DriverManager.getConnection("jdbc:sqlite:C:\\Programas\\fundosAcoes\\BancoDados\\Cotacoes.db");
 		      
 		      System.out.println("Conexão com o banco de dados SQL Server estabelecida com sucesso!");
 		  

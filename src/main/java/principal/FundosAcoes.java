@@ -27,7 +27,7 @@ public class FundosAcoes {
         
         //Lista de papeis
         papeis.add("ABCB4");
-//        papeis.add("AERI3");
+//        papeis.add("AERI3");  
 //        papeis.add("B3SA3");
 //        papeis.add("BBDC3");
 //        papeis.add("BBSE3");
@@ -41,7 +41,6 @@ public class FundosAcoes {
 //        papeis.add("ITSA4");
 //        papeis.add("ITUB3");
 //        papeis.add("KLBN4");
-////        papeis.add("MGLU1");
 //        papeis.add("MGLU3");
 //        papeis.add("NGRD3");
 //        papeis.add("OIBR3");
@@ -52,6 +51,7 @@ public class FundosAcoes {
 //        papeis.add("TAEE4");
 //        papeis.add("TRPL4");    
         
+        //LISTA DE FUNDOS 
         fundos.add("IRDM11");
       
         
@@ -59,10 +59,10 @@ public class FundosAcoes {
             try{
                 sitestatusinvest.InicializarCotacao(papel);
                 Thread.sleep(15000);
-//               sitefundamentus.InicializarCotacao(papel);
-//               Thread.sleep(10000);
-//                siteinvestidor10.InicializarCotacao(papel);
-//                Thread.sleep(15000);   
+                sitefundamentus.InicializarCotacao(papel);
+                Thread.sleep(10000);
+                siteinvestidor10.InicializarCotacao(papel);
+                Thread.sleep(15000);   
             }catch(InterruptedException e){
                 System.out.println(e.toString());
             }
@@ -75,8 +75,8 @@ public class FundosAcoes {
                 Thread.sleep(15000);
                 sitefundamentus.InicializarCotacao(papel, 1);
                 Thread.sleep(10000);
-//                siteinvestidor10.InicializarCotacao(papel, 1);
-//                Thread.sleep(15000);   
+                siteinvestidor10.InicializarCotacao(papel, 1);
+                Thread.sleep(15000);   
             }catch(InterruptedException e){
                 System.out.println(e.toString());
             }
