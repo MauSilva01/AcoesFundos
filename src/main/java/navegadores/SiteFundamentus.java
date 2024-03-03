@@ -16,7 +16,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class SiteFundamentus {
 
-<<<<<<< HEAD
     private final WebDriver driver = new ChromeDriver();
     private PapelCotacao papel;
 
@@ -67,41 +66,6 @@ public class SiteFundamentus {
 	}		
             return true;
     }
-=======
-	private final WebDriver driver = new ChromeDriver();
-	private PapelCotacao papel;
-
-	public boolean InicializarCotacao(String sPapel) {
-		try {
-			
-			this.papel = new PapelCotacao();		
-			this.papel.Codigo = sPapel;
-			this.papel.SiteOrigem = "Fundamentus";
-			String url = "https://www.fundamentus.com.br/detalhes.php?papel=" + sPapel;
-			driver.get(url);
-         
-			this.DividendYield();
-			this.Preco();
-			this.EvaluationSobreEbitda();    
-			this.LiquidezDiaria();
-			this.PatrimonioLiquido();    
-			this.PatriminoSobreLucro();
-			this.Preco();
-			this.PVP();
-			this.ROE();
-			this.ValorMercado();
-           
-          
-           
-           ConexaoSqlite.SalvarPapelCotacao(papel);
-		
-		} catch(Exception e) {
-			System.out.println(e.toString());
-			return false;
-		}		
-		return true;
-	}
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 
 	public  boolean DriverEncerrar() {
 		try {
@@ -118,21 +82,12 @@ public class SiteFundamentus {
 		System.out.println("fundamentus - Buscando Preço ");
 		String vlrRetorno = "null";
 		try {	
-<<<<<<< HEAD
                     WebElement e11 = driver.findElement(By.xpath("//span[text()='Cotação']"));
                     WebElement e12 = e11.findElement(By.xpath(".."));
                     WebElement e13 = e12.findElement(By.xpath(".."));
                     WebElement e14 = e13.findElements(By.xpath("//td")).get(3);
                     vlrRetorno = e14.getText().trim();
                     System.out.println(vlrRetorno);
-=======
-			WebElement e11 = driver.findElement(By.xpath("//span[text()='Cotação']"));
-			WebElement e12 = e11.findElement(By.xpath(".."));
-			WebElement e13 = e12.findElement(By.xpath(".."));
-			WebElement e14 = e13.findElements(By.xpath("//td")).get(3);
-			vlrRetorno = e14.getText().trim();
-        
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		}
@@ -143,7 +98,6 @@ public class SiteFundamentus {
 		System.out.println("fundamentus - Buscando Preço ");
 		String vlrRetorno = "null";
 		try {
-<<<<<<< HEAD
 
                     WebElement e11 = driver.findElement(By.xpath("//span[text()='P/VP']"));
                     WebElement e12 = e11.findElement(By.xpath(".."));
@@ -151,15 +105,6 @@ public class SiteFundamentus {
                     WebElement e14 = e13.findElements(By.xpath("//td[@class='data w2']")).get(3);
                     vlrRetorno = e14.getText().trim();
                     System.out.println(vlrRetorno);
-=======
-	
-			WebElement e11 = driver.findElement(By.xpath("//span[text()='P/VP']"));
-			WebElement e12 = e11.findElement(By.xpath(".."));
-			WebElement e13 = e12.findElement(By.xpath(".."));	 
-			WebElement e14 = e13.findElements(By.xpath("//td[@class='data w2']")).get(3);
-			vlrRetorno = e14.getText().trim();
-			
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		} catch(Exception e) {
 			System.out.println(e.toString());	
 		}
@@ -177,11 +122,7 @@ public class SiteFundamentus {
 			WebElement e13 = e12.findElement(By.xpath(".."));
 			WebElement e14 = e13.findElements(By.xpath("//td[@class='data']")).get(7);
 			vlrRetorno = e14.getText().trim();
-<<<<<<< HEAD
                         System.out.println(vlrRetorno);
-=======
-       
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		} catch(Exception e) {
 			System.out.println(e.toString());	
 		}
@@ -198,10 +139,7 @@ public class SiteFundamentus {
 			WebElement e12 = e11.findElement(By.xpath("../../..")); // Ajuste a quantidade de ".." conforme a hierarquia da sua estrutura HTML
 			WebElement e15 = e12.findElements(By.xpath(".//td[@class='data']")).get(6); // Subtraia 1 do índice para obter o quinto elemento
 			vlrRetorno = e15.getText().trim();
-<<<<<<< HEAD
                         System.out.println(vlrRetorno);
-=======
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		} catch(Exception e) {
 			System.out.println(e.toString());	
 		}
@@ -217,11 +155,7 @@ public class SiteFundamentus {
 			WebElement e12 = e11.findElement(By.xpath("../../.."));			 
 			WebElement e13 = e12.findElements(By.xpath(".//td[@class='data']")).get(7);
 			vlrRetorno = e13.getText().trim();
-<<<<<<< HEAD
                         System.out.println(vlrRetorno);
-=======
-       
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		} catch(Exception e) {
 			System.out.println(e.toString());
 	
@@ -238,12 +172,8 @@ public class SiteFundamentus {
 			WebElement e11 = driver.findElement(By.xpath("//span[text()='EV / EBITDA']"));
 			WebElement e12 = e11.findElement(By.xpath("../../.."));			
 			WebElement e13 = e12.findElements(By.xpath(".//td[@class='data']")).get(9);
-<<<<<<< HEAD
                         vlrRetorno = e13.getText().trim();
                         System.out.println(vlrRetorno);
-=======
-	        vlrRetorno = e13.getText().trim();
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 	       
 		} catch(Exception e) {
 			System.out.println(e.toString());	
@@ -253,11 +183,7 @@ public class SiteFundamentus {
 	}
 
 	private void PatriminoSobreLucro( ) {
-<<<<<<< HEAD
 		System.out.println("fundamentus - Buscando patrimonio sobre lucro ");
-=======
-		System.out.println("fundamentus - Buscando ebit ");
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		String vlrRetorno = "null";
 		try {
 	
@@ -265,10 +191,7 @@ public class SiteFundamentus {
 			WebElement e12 = e11.findElement(By.xpath("../../.."));		 
 			WebElement e13 = e12.findElements(By.xpath(".//td[@class='data w2']")).get(0);
 			vlrRetorno = e13.getText().trim();
-<<<<<<< HEAD
                         System.out.println(vlrRetorno);
-=======
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
        
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -279,11 +202,7 @@ public class SiteFundamentus {
 	}
 
 	private void PatrimonioLiquido( ) {
-<<<<<<< HEAD
 		System.out.println("fundamentus - Buscando patrimonio liq ");
-=======
-		System.out.println("fundamentus - Buscando ebit ");
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		String vlrRetorno = "null";
 		try {
 	
@@ -291,10 +210,7 @@ public class SiteFundamentus {
 			WebElement e12 = e11.findElement(By.xpath("../../.."));		 
 			WebElement e13 = e12.findElements(By.xpath(".//td[@class='data']")).get(1);
 			vlrRetorno = e13.getText().trim();
-<<<<<<< HEAD
                         System.out.println(vlrRetorno);
-=======
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
        
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -305,11 +221,7 @@ public class SiteFundamentus {
 	}
 
 	private void ValorMercado( ) {
-<<<<<<< HEAD
 		System.out.println("fundamentus - Buscando valor mercado  ");
-=======
-		System.out.println("fundamentus - Buscando ebit ");
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 		String vlrRetorno = "null";
 		try {
 	
@@ -317,10 +229,7 @@ public class SiteFundamentus {
 			WebElement e12 = e11.findElement(By.xpath("../../.."));		 
 			WebElement e13 = e12.findElements(By.xpath(".//td[@class='data w3']")).get(0);
 	        vlrRetorno = e13.getText().trim();
-<<<<<<< HEAD
                 System.out.println(vlrRetorno);
-=======
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 	       
 		} catch(Exception e) {
 			System.out.println(e.toString());
@@ -328,7 +237,6 @@ public class SiteFundamentus {
 		}		
 		this.papel.ValorMercado = papel.formatarValorDB(vlrRetorno);
 	}
-<<<<<<< HEAD
         
         private void FII_QuantidadeImoveis( ) {
 		System.out.println("fundamentus - Buscando quantidade de imoveis ");
@@ -399,6 +307,4 @@ public class SiteFundamentus {
 		this.papel.FII_Vacancia = papel.formatarValorDB(vlrRetorno);
 	}
         
-=======
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 }

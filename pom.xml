@@ -12,7 +12,6 @@
         <exec.mainClass>principal.FundosAcoes</exec.mainClass>
     </properties>
     
-<<<<<<< HEAD
     <build>
         <plugins>
             <plugin>
@@ -54,9 +53,6 @@
     </build>
     
 <dependencies>
-=======
-  <dependencies>
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -68,7 +64,6 @@
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-chrome-driver</artifactId>
-<<<<<<< HEAD
     <version>4.18.0</version>
 </dependency>
 
@@ -77,9 +72,6 @@
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
     <version>4.18.0</version>
-=======
-    <version>4.15.0</version>
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 </dependency>
 
 <dependency>
@@ -92,8 +84,5 @@
 
 
   </dependencies>
-<<<<<<< HEAD
  
-=======
->>>>>>> 6d5ebf85242a2151c1a6635e8058061c8785d3de
 </project>
