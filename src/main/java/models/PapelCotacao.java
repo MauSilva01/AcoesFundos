@@ -9,8 +9,7 @@ package models;
  * @author Mauricio
  */
 public class PapelCotacao {
-    
-    
+
     public String Codigo = "";
     public String DividaSobreEbitda= "";    
     public String DividendYield= "";
@@ -24,14 +23,12 @@ public class PapelCotacao {
     public String ROE= "";
     public String SiteOrigem= "";
     public String ValorMercado= "";
-    
+
     //Especifico de Fundos de Investimentos
     public String FII_QuantidadeImoveis = "";
     public String FII_Vacancia = "";
-    
-    
- 
-    
+    public String FII_PatrimonioLiquido = "";
+   
     public String formatarValorDB(String sValor) {
         
         //Se o valor da variavel for null
@@ -40,10 +37,10 @@ public class PapelCotacao {
 
         //Retira espacos em branco
         String sRetorno = sValor.trim();
-        
+
         //retira caracteres de percentual
         sRetorno = sRetorno.replace("%", "").trim();
-        
+
         //retira caracteres pontuacao
         sRetorno = sRetorno.replace(".", "").trim();
 
@@ -52,7 +49,7 @@ public class PapelCotacao {
 
         //retira caracteres pontuacao
         sRetorno = sRetorno.replace(",", ".").trim();        
-        
+
         if (sRetorno.contains("Milhões")) {
             sRetorno = sRetorno.replace("Milhões", "").trim();
             Double v = Double.parseDouble(sRetorno) * 1000000;
@@ -67,12 +64,11 @@ public class PapelCotacao {
 
         //retira caracteres pontuacao
         sRetorno = sRetorno.replace(",", ".").trim();
-        
-        
+
         //Ainda nao eh um valor valido
         if (sRetorno.equals("-") || sRetorno.equals(""))
             sRetorno = "";
-        
+
         return sRetorno;
     }
 }

@@ -29,6 +29,7 @@ public class SiteStatusInvest {
         
         String url = "";
 	try {
+            System.out.println("Iniciando Cotacao do " + sPapel);
             //Inicializando o papel
             this.papel = new PapelCotacao();			
             this.papel.Codigo = sPapel;
@@ -219,13 +220,12 @@ public class SiteStatusInvest {
     	System.out.println("StatusInvest - Buscando Valor Mercado ");
     	String vlrRetorno = "null";
     	try {
-    		WebElement e11 = driver.findElement(By.xpath("//div[@title='O valor da ação multiplicado pelo número de ações existentes']"));
-    		vlrRetorno = e11.findElement(By.className("value")).getText();
-		    System.out.println(vlrRetorno);
-		} catch(Exception e) {
-			System.out.println(e.toString());
-		
-		}
-		this.papel.ValorMercado = papel.formatarValorDB(vlrRetorno);
-	}
+            WebElement e11 = driver.findElement(By.xpath("//div[@title='O valor da ação multiplicado pelo número de ações existentes']"));
+            vlrRetorno = e11.findElement(By.className("value")).getText();
+            System.out.println(vlrRetorno);
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+	this.papel.ValorMercado = papel.formatarValorDB(vlrRetorno);
+    }
 }
