@@ -52,21 +52,28 @@ public class FundosAcoes {
         papeis.add("TRPL4");    
         
         //LISTA DE FUNDOS 
+        fundos.add("GARE11");
+        fundos.add("HOFC11");
         fundos.add("IRDM11");
-        fundos.add("ONEF11");
-        //fundos.add("BDIV11");
-        fundos.add("PATC11");
-        fundos.add("BLMG11");
+        fundos.add("LIFE11");
+        fundos.add("MXRF11");
+        fundos.add("RECT11");
+        fundos.add("SCPF11");
+        fundos.add("SEQR11");
+        fundos.add("TORD11");
+        fundos.add("VINO11");
+        fundos.add("VIUR11");
+        fundos.add("VSLH11");
       
         
         for (String papel : papeis) {        
             try{
                 sitestatusinvest.InicializarCotacao(papel);
-                //Thread.sleep(15000);
+                Thread.sleep(15000);
                 sitefundamentus.InicializarCotacao(papel);
-                //Thread.sleep(10000);
+                Thread.sleep(10000);
                 siteinvestidor10.InicializarCotacao(papel);
-                //Thread.sleep(15000);   
+                Thread.sleep(15000);   
             }catch(Exception e){
                 System.out.println(e.toString());
             }
@@ -76,11 +83,11 @@ public class FundosAcoes {
         for (String papel : fundos) {        
             try{
                 sitestatusinvest.InicializarCotacao(papel, 1);
-                //Thread.sleep(15000);
+                Thread.sleep(15000);
                 sitefundamentus.InicializarCotacao(papel, 1);
-                //Thread.sleep(10000);
+                Thread.sleep(10000);
                 siteinvestidor10.InicializarCotacao(papel, 1);
-                //Thread.sleep(15000);   
+                Thread.sleep(15000);   
             }catch(Exception e){
                 System.out.println(e.toString());
             }
