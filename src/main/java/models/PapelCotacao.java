@@ -96,5 +96,6 @@ public class PapelCotacao {
         
         return sRetorno;
     }
+    
 }
         

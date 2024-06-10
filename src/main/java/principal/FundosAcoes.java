@@ -7,6 +7,7 @@ package principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import models.PapelCotacao;
 import navegadores.SiteFundamentus;
 import navegadores.SiteInvestidor10;
 import navegadores.SiteStatusInvest;
@@ -64,6 +65,9 @@ public class FundosAcoes {
         fundos.add("VINO11");
         fundos.add("VIUR11");
         fundos.add("VSLH11");
+        
+      
+        
       
         
         for (String papel : papeis) {        
@@ -93,8 +97,9 @@ public class FundosAcoes {
             }
                   
         }
-          
-    
-      
+ 
     }
+    
+    
 }
+
