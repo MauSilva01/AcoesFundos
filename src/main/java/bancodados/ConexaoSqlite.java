@@ -50,19 +50,19 @@ public class ConexaoSqlite {
               preparedStatement.setString(2, origem);
               preparedStatement.setDouble(3, parseDouble(preco));
               preparedStatement.setDouble(4, parseDouble(pvp));
-              preparedStatement.setInt(5, parseInt(liquidezDiaria));
+              preparedStatement.setDouble(5, parseDouble(liquidezDiaria));
               preparedStatement.setDouble(6, parseDouble(dy));
               preparedStatement.setDouble(7, parseDouble(roe));
               preparedStatement.setBigDecimal(8, div_ebitda.isEmpty() ? null : new BigDecimal(div_ebitda));
-              preparedStatement.setDouble(9, parseDouble(ev_ebitda));
+              preparedStatement.setBigDecimal(9, ev_ebitda.isEmpty() ? null : new BigDecimal(ev_ebitda));
               preparedStatement.setDouble(10, parseDouble(pl));
               preparedStatement.setDouble(11, parseDouble(patrimonio_liq));
-              preparedStatement.setDouble(12, parseDouble(payout));
+              preparedStatement.setBigDecimal(12, payout.isEmpty() ? null : new BigDecimal(payout));
               preparedStatement.setDouble(13, parseDouble(vlrMercado));
-              preparedStatement.setInt(14, parseInt(FII_QuantidadeImoveis));
-              preparedStatement.setDouble(15, parseDouble(FII_Vacancia));
+              preparedStatement.setBigDecimal(14, FII_QuantidadeImoveis.isEmpty() ? null : new BigDecimal(FII_QuantidadeImoveis));
+              preparedStatement.setBigDecimal(15, FII_Vacancia.isEmpty() ? null : new BigDecimal(FII_Vacancia));
             // Adicione os demais campos e valores...
-
+                    
             preparedStatement.executeUpdate();
       
             System.out.println("Dados inseridos com Sucesso!!");
