@@ -83,7 +83,7 @@ public class SiteStatusInvest {
     //Busca Preço da Açao no site Statusinvest
     private void Preco( ) {
     	System.out.println("StatusInvest - Buscando Preço ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Valor atual do ativo']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -98,7 +98,7 @@ public class SiteStatusInvest {
     //Busca P/VP da Açao no site Statusinvest
     private void PVP( ) {
     	System.out.println("StatusInvest - Buscando P/VP ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//h3[text()='P/VP']")); 
                 WebElement e12 = e11.findElement(By.xpath("../../.."));
@@ -113,7 +113,7 @@ public class SiteStatusInvest {
     //Busca a Liquidez Diaria da Açao no site Statusinvest
     private void LiquidezDiaria( ) {
     	System.out.println("StatusInvest - Buscando LiquidezDiaria ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.className("info")); 
     		WebElement e12 = e11.findElement(By.xpath("//span[text()='Liquidez média diária']"));
@@ -130,7 +130,7 @@ public class SiteStatusInvest {
     //Busca o Dividend Yield da açao no site Status invest
     private void DividendYield( ) {
     	System.out.println("StatusInvest - Buscando DY ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Dividend Yield com base nos últimos 12 meses']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -145,7 +145,7 @@ public class SiteStatusInvest {
     //Busca o ROE da açao fornecida pelo driver no site Status invest
     private void ROE( ) {
     	System.out.println("StatusInvest - Buscando ROE ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Mede a capacidade de agregar valor de uma empresa a partir de seus próprios recursos e do dinheiro de investidores.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -160,7 +160,7 @@ public class SiteStatusInvest {
     //Busca o Div_Ebitda da açao fornecida pelo driver no site Status invest
     private void DividaSobreEbitda( ) {
     	System.out.println("StatusInvest - Buscando div_ebitda ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Indica quanto tempo seria necessário para pagar a dívida líquida da empresa considerando o EBITDA atual. Indica também o grau de endividamento da companhia.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -174,7 +174,7 @@ public class SiteStatusInvest {
     //Busca o Ev_Ebitda da açao fornecida pelo driver no site Status invest
     private void EvaluationSobreEbitda( ) {
     	System.out.println("StatusInvest - Buscando ev_ebitda ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='O EV (Enterprise Value ou Valor da Firma), indica quanto custaria para comprar todos os ativos da companhia, descontando o caixa. Este indicador mostra quanto tempo levaria para o valor calculado no EBITDA pagar o investimento feito para compra-la.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -188,7 +188,7 @@ public class SiteStatusInvest {
     //Busca o Patrimonio Liquido da açao fornecida pelo driver no site Status inves
     private void PatriminoSobreLucro( ) {
     	System.out.println("StatusInvest - Buscando Patrimonio ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='Dá uma ideia do quanto o mercado está disposto a pagar pelos lucros da empresa.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -203,7 +203,7 @@ public class SiteStatusInvest {
     //Busca o PL da açao fornecida pelo driver no site Status inves
     private void PatrimonioLiquido( ) {
     	System.out.println("StatusInvest - Buscando Patrimonio_Liq ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
     		WebElement e11 = driver.findElement(By.xpath("//div[@title='É uma referência aos bens e direitos que podem ser convertidos em dinheiro em curto prazo.']"));
     		vlrRetorno = e11.findElement(By.className("value")).getText();
@@ -218,7 +218,7 @@ public class SiteStatusInvest {
 
     private void ValorMercado( ) {
     	System.out.println("StatusInvest - Buscando Valor Mercado ");
-    	String vlrRetorno = "null";
+    	String vlrRetorno = "0";
     	try {
             WebElement e11 = driver.findElement(By.xpath("//div[@title='O valor da ação multiplicado pelo número de ações existentes']"));
             vlrRetorno = e11.findElement(By.className("value")).getText();

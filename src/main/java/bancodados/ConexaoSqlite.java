@@ -48,17 +48,17 @@ public class ConexaoSqlite {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
               preparedStatement.setString(1, codigo);
               preparedStatement.setString(2, origem);
-              preparedStatement.setDouble(3, parseDouble(preco));
-              preparedStatement.setDouble(4, parseDouble(pvp));
-              preparedStatement.setDouble(5, parseDouble(liquidezDiaria));
-              preparedStatement.setDouble(6, parseDouble(dy));
-              preparedStatement.setDouble(7, parseDouble(roe));
+              preparedStatement.setBigDecimal(3, preco.isEmpty() ? null : new BigDecimal(preco));
+              preparedStatement.setBigDecimal(4, pvp.isEmpty() ? null : new BigDecimal(pvp));
+              preparedStatement.setBigDecimal(5, liquidezDiaria.isEmpty() ? null : new BigDecimal(liquidezDiaria));
+              preparedStatement.setBigDecimal(6, liquidezDiaria.isEmpty() ? null : new BigDecimal(dy));
+              preparedStatement.setBigDecimal(7, roe.isEmpty() ? null : new BigDecimal(roe));
               preparedStatement.setBigDecimal(8, div_ebitda.isEmpty() ? null : new BigDecimal(div_ebitda));
               preparedStatement.setBigDecimal(9, ev_ebitda.isEmpty() ? null : new BigDecimal(ev_ebitda));
-              preparedStatement.setDouble(10, parseDouble(pl));
-              preparedStatement.setDouble(11, parseDouble(patrimonio_liq));
+              preparedStatement.setBigDecimal(10, pl.isEmpty() ? null : new BigDecimal(pl));
+              preparedStatement.setBigDecimal(11, patrimonio_liq.isEmpty() ? null : new BigDecimal(patrimonio_liq));
               preparedStatement.setBigDecimal(12, payout.isEmpty() ? null : new BigDecimal(payout));
-              preparedStatement.setDouble(13, parseDouble(vlrMercado));
+              preparedStatement.setBigDecimal(13, vlrMercado.isEmpty() ? null : new BigDecimal(vlrMercado));
               preparedStatement.setBigDecimal(14, FII_QuantidadeImoveis.isEmpty() ? null : new BigDecimal(FII_QuantidadeImoveis));
               preparedStatement.setBigDecimal(15, FII_Vacancia.isEmpty() ? null : new BigDecimal(FII_Vacancia));
             // Adicione os demais campos e valores...
@@ -91,6 +91,6 @@ public class ConexaoSqlite {
         papel.FII_QuantidadeImoveis,
         papel.FII_Vacancia
         );
-    }
+     }
     
 }

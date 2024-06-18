@@ -48,17 +48,36 @@ public class PapelCotacao {
         sRetorno = sRetorno.replace("R$", "").trim();
 
         //retira caracteres pontuacao
-        sRetorno = sRetorno.replace(",", ".").trim();        
+        sRetorno = sRetorno.replace(",", ".").trim();
+        
+        if (sRetorno.contains("MILHÕES")) {
+            sRetorno = sRetorno.replace("MILHÕES", "").trim();
+            Double v = Double.parseDouble(sRetorno) * 1000000;
+            sRetorno = String.format("%f", v);
+        }
         
         if (sRetorno.contains("Milhões")) {
             sRetorno = sRetorno.replace("Milhões", "").trim();
             Double v = Double.parseDouble(sRetorno) * 1000000;
             sRetorno = String.format("%f", v);
         }
+        
+        if (sRetorno.contains("Milhão")) {
+            sRetorno = sRetorno.replace("Milhão", "").trim();
+            Double v = Double.parseDouble(sRetorno) * 1000000;
+            sRetorno = String.format("%f", v);
+        }
+
 
         if (sRetorno.contains("Bilhões")) {
             sRetorno = sRetorno.replace("Bilhões", "").trim();
             Double v = Double.parseDouble(sRetorno) * 1000000000;
+            sRetorno = String.format("%f", v);
+        }
+        
+        if (sRetorno.contains("Mil")) {
+            sRetorno = sRetorno.replace("Mil", "").trim();
+            Double v = Double.parseDouble(sRetorno) * 1000;
             sRetorno = String.format("%f", v);
         }
         
@@ -67,6 +86,8 @@ public class PapelCotacao {
             Double v = Double.parseDouble(sRetorno) * 1000000;
             sRetorno = String.format("%f", v);
         }
+        
+
         
         if (sRetorno.contains("K")) {
             sRetorno = sRetorno.replace("K", "").trim();
@@ -80,11 +101,13 @@ public class PapelCotacao {
             sRetorno = String.format("%f", v);
         }
         
-        if (sRetorno.contains("Bilhão")) {
-            sRetorno = sRetorno.replace("Bilhões", "").trim();
+        if (sRetorno.contains("BILHÃO")) {
+            sRetorno = sRetorno.replace("BILHÃO", "").trim();
             Double v = Double.parseDouble(sRetorno) * 1000000000;
             sRetorno = String.format("%f", v);
         }
+        
+      
 
         //retira caracteres pontuacao
         sRetorno = sRetorno.replace(",", ".").trim();
