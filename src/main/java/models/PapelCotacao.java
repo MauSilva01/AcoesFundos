@@ -30,94 +30,62 @@ public class PapelCotacao {
     public String FII_PatrimonioLiquido = "";
    
     public String formatarValorDB(String sValor) {
-        
-       //Se o valor da variavel for null
-        if (sValor == null)
+        // Se o valor da variavel for null
+        if (sValor == null) {
             return "";
+        }
 
-        //Retira espacos em branco
+        // Retira espaços em branco
         String sRetorno = sValor.trim();
-        
-        //retira caracteres de percentual
-        sRetorno = sRetorno.replace("%", "").trim();
-        
-        //retira caracteres pontuacao
-        sRetorno = sRetorno.replace(".", "").trim();
 
-        //retira caracteres pontuacao
+        // Retira caracteres de percentual
+        sRetorno = sRetorno.replace("%", "").trim();
+
+        // Retira caracteres de pontuação
         sRetorno = sRetorno.replace("R$", "").trim();
 
-        //retira caracteres pontuacao
+        // Substitui vírgulas por pontos
         sRetorno = sRetorno.replace(",", ".").trim();
-        
-        if (sRetorno.contains("MILHÕES")) {
-            sRetorno = sRetorno.replace("MILHÕES", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000;
-            sRetorno = String.format("%f", v);
-        }
-        
-        if (sRetorno.contains("Milhões")) {
-            sRetorno = sRetorno.replace("Milhões", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000;
-            sRetorno = String.format("%f", v);
-        }
-        
-        if (sRetorno.contains("Milhão")) {
-            sRetorno = sRetorno.replace("Milhão", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000;
-            sRetorno = String.format("%f", v);
+
+        // Tratamento para multiplicação
+        sRetorno = processarMultiplicadores(sRetorno, "BILHÕES", 1000000000);
+        sRetorno = processarMultiplicadores(sRetorno, "Bilhões", 1000000000);
+        sRetorno = processarMultiplicadores(sRetorno, "BILHÃO", 1000000000);
+        sRetorno = processarMultiplicadores(sRetorno, "Bilhão", 1000000000);
+        sRetorno = processarMultiplicadores(sRetorno, "MILHÕES", 1000000);
+        sRetorno = processarMultiplicadores(sRetorno, "Milhões", 1000000);
+        sRetorno = processarMultiplicadores(sRetorno, "Milhão", 1000000);
+        sRetorno = processarMultiplicadores(sRetorno, "MIL", 1000);
+        sRetorno = processarMultiplicadores(sRetorno, "Mil", 1000);
+        sRetorno = processarMultiplicadores(sRetorno, "M", 1000000);
+        sRetorno = processarMultiplicadores(sRetorno, "K", 1000);
+
+        // Ainda não é um valor válido
+        if (sRetorno.equals("-") || sRetorno.equals("")) {
+            sRetorno = "0";
         }
 
+        // Formatação final para garantir que o valor seja um número válido
+        try {
+            Double.parseDouble(sRetorno);
+        } catch (NumberFormatException e) {
+            sRetorno = "0";
+        }
 
-        if (sRetorno.contains("Bilhões")) {
-            sRetorno = sRetorno.replace("Bilhões", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000000;
-            sRetorno = String.format("%f", v);
-        }
-        
-        if (sRetorno.contains("Mil")) {
-            sRetorno = sRetorno.replace("Mil", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000;
-            sRetorno = String.format("%f", v);
-        }
-        
-        if (sRetorno.contains("M")) {
-            sRetorno = sRetorno.replace("M", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000;
-            sRetorno = String.format("%f", v);
-        }
-        
-
-        
-        if (sRetorno.contains("K")) {
-            sRetorno = sRetorno.replace("K", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000;
-            sRetorno = String.format("%f", v);
-        }
-        
-        if (sRetorno.contains("BILHÕES")) {
-            sRetorno = sRetorno.replace("BILHÕES", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000000;
-            sRetorno = String.format("%f", v);
-        }
-        
-        if (sRetorno.contains("BILHÃO")) {
-            sRetorno = sRetorno.replace("BILHÃO", "").trim();
-            Double v = Double.parseDouble(sRetorno) * 1000000000;
-            sRetorno = String.format("%f", v);
-        }
-        
-      
-
-        //retira caracteres pontuacao
-        sRetorno = sRetorno.replace(",", ".").trim();
-        
-        
-        //Ainda nao eh um valor valido
-        if (sRetorno.equals("-") || sRetorno.equals(""))
-            sRetorno = "";
-        
         return sRetorno;
+    }
+
+    private String processarMultiplicadores(String valor, String unidade, double multiplicador) {
+        if (valor.contains(unidade)) {
+            valor = valor.replace(unidade, "").trim();
+            try {
+                Double v = Double.parseDouble(valor) * multiplicador;
+                valor = String.format("%.0f", v);  // Formata para remover casas decimais
+            } catch (NumberFormatException e) {
+                valor = "0";  // Define como 0 em caso de erro
+            }
+        }
+        return valor;
     }
     
 }

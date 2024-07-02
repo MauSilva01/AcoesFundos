@@ -16,19 +16,23 @@ import navegadores.SiteStatusInvest;
  *
  * @author Mauricio
  */
-public class FundosAcoes {
+ 
+public class FundosAcoes implements Runnable {
 
     public static void main(String[] args) {
         
-        SiteStatusInvest sitestatusinvest = new SiteStatusInvest();   
-     // SiteFundamentus sitefundamentus = new SiteFundamentus();
-      // SiteInvestidor10 siteinvestidor10 =new SiteInvestidor10();
+    	SiteStatusInvest sitestatusinvest = new SiteStatusInvest();   
+    	SiteFundamentus sitefundamentus = new SiteFundamentus();
+    	SiteInvestidor10 siteinvestidor10 =new SiteInvestidor10();
         List<String> papeis = new ArrayList<>();
         List<String> fundos = new ArrayList<>();
         
+        System.out.println("Executando a classe principal... " + new java.util.Date());
+        
         //Lista de papeis
-        papeis.add("ABCB4");
-       
+        
+        
+        papeis.add("ABCB4");       
         papeis.add("AERI3");  
         papeis.add("B3SA3");
         papeis.add("BBDC3");
@@ -54,22 +58,18 @@ public class FundosAcoes {
         papeis.add("TRPL4");    
         
         //LISTA DE FUNDOS 
-       // fundos.add("GARE11");
-        
-     /*  fundos.add("RECT11");
-        
-        
+        fundos.add("GARE11");        
+        fundos.add("RECT11");      
         fundos.add("HOFC11");
         fundos.add("IRDM11");
         fundos.add("LIFE11");
-        fundos.add("MXRF11");
-       
+        fundos.add("MXRF11");     
         fundos.add("SCPF11");
         fundos.add("SEQR11");
         fundos.add("TORD11");
         fundos.add("VINO11");
         fundos.add("VIUR11");
-        fundos.add("VSLH11"); */
+        fundos.add("VSLH11"); 
       
         
       
@@ -78,12 +78,12 @@ public class FundosAcoes {
         
         for (String papel : papeis) {        
             try{
-                sitestatusinvest.InicializarCotacao(papel);
+               sitestatusinvest.InicializarCotacao(papel);
               //  Thread.sleep(15000);
-               //sitefundamentus.InicializarCotacao(papel);
-              // Thread.sleep(10000);
-             //  siteinvestidor10.InicializarCotacao(papel);
-              // Thread.sleep(15000);   
+               sitefundamentus.InicializarCotacao(papel);
+             //  Thread.sleep(10000);
+               siteinvestidor10.InicializarCotacao(papel);
+             //  Thread.sleep(15000);   
             }catch(Exception e){
                 System.out.println(e.toString());
             }
@@ -92,11 +92,11 @@ public class FundosAcoes {
        
         for (String papel : fundos) {        
             try{
-                sitestatusinvest.InicializarCotacao(papel, 1);
-              //  Thread.sleep(15000);
-               //sitefundamentus.InicializarCotacao(papel, 1);
-              // Thread.sleep(10000);
-          // siteinvestidor10.InicializarCotacao(papel, 1);
+               sitestatusinvest.InicializarCotacao(papel, 1);
+                //Thread.sleep(15000);
+               sitefundamentus.InicializarCotacao(papel, 1);
+              //Thread.sleep(10000);
+               siteinvestidor10.InicializarCotacao(papel, 1);
                //Thread.sleep(15000);  
             }catch(Exception e){
                 System.out.println(e.toString());
@@ -105,6 +105,13 @@ public class FundosAcoes {
         }
  
     }
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		 main(new String[0]);
+		
+	}
     
     
 }
