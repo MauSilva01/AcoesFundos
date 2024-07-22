@@ -34,6 +34,8 @@ public class AgendadorDeTarefas {
             fundosAcoes.run();
             // Agenda a tarefa para executar inicialmente após 0 segundos e depois a cada 2 minutos
             //scheduler.scheduleAtFixedRate(fundosAcoes, 0, 1, TimeUnit.HOURS);
+            
+            System.out.println("finalizando busca de dados" + now);
 
             // Aguarda até o horário final
             try {
