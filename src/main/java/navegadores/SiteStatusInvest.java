@@ -6,6 +6,7 @@ package navegadores;
 
 import bancodados.ConexaoSqlite;
 import models.PapelCotacao;
+import models.SeleniumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,7 @@ public class SiteStatusInvest {
         return InicializarCotacao( sPapel, 0);
     }
     
-    public boolean InicializarCotacao(String sPapel, int sTipo ) {
+    public boolean InicializarCotacao(String sPapel, int sTipo) {
         
         String url = "";
 	try {
@@ -40,8 +41,8 @@ public class SiteStatusInvest {
                 url = "https://statusinvest.com.br/acoes/" + sPapel;
             else
                 url = "https://statusinvest.com.br/fundos-imobiliarios/" + sPapel;   
-            
-            driver = new ChromeDriver();
+          
+            driver = SeleniumDriver.DriverStart();
             driver.get(url);
 
             //Buscando os dados comuns
@@ -71,10 +72,12 @@ public class SiteStatusInvest {
             ConexaoSqlite.SalvarPapelCotacao(papel);
 
             //fechando o driver
-            driver.quit();
+            //driver.quit();
             
         } catch(Exception e) {
             System.out.println(e.toString());
+            SeleniumDriver.DriverFinish();
+        
             return false;
         }
         return true;

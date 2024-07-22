@@ -6,6 +6,7 @@ package navegadores;
 
 import bancodados.ConexaoSqlite;
 import models.PapelCotacao;
+import models.SeleniumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SiteInvestidor10 {
 
-    private final WebDriver driver = new ChromeDriver();
+    private static WebDriver driver;
     private PapelCotacao papel; 
 
     public boolean InicializarCotacao(String sPapel) {
@@ -35,7 +36,6 @@ public class SiteInvestidor10 {
             
             //Inicializando o Pàpel
             this.papel = new PapelCotacao();
-
             //Definindo valores
             this.papel.Codigo = sPapel;
             this.papel.SiteOrigem = "INVESTIDOR10";
@@ -46,7 +46,8 @@ public class SiteInvestidor10 {
             }else {
                  url = "https://investidor10.com.br/fiis/" + sPapel;
             }
-
+            
+            driver = SeleniumDriver.DriverStart();
             driver.get(url);
             
             //buscando valores em comum
@@ -76,21 +77,15 @@ public class SiteInvestidor10 {
 
             //Salvando Dados em Banco de Dados
             ConexaoSqlite.SalvarPapelCotacao(papel);
+            
+            //driver.quit();
 
         }catch(Exception e) {
             System.out.println(e.toString());
+            SeleniumDriver.DriverFinish();
             return false;
         }
         return true;
-    }
-
-    public void DriverEncerrar() {
-        System.out.println("Site Investidor10 - Encerrando o Driver. ");
-        try {
-            driver.quit();
-        }catch(Exception e) {
-            System.out.println(e.toString());
-        }
     }
 
     private void DividendYield() {

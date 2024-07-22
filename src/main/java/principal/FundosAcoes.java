@@ -5,9 +5,7 @@
 package principal;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import models.PapelCotacao;
 import navegadores.SiteFundamentus;
 import navegadores.SiteInvestidor10;
 import navegadores.SiteStatusInvest;
@@ -20,10 +18,10 @@ import navegadores.SiteStatusInvest;
 public class FundosAcoes implements Runnable {
 
     public static void main(String[] args) {
-        
+        SiteInvestidor10 siteinvestidor10 =new SiteInvestidor10();
     	SiteStatusInvest sitestatusinvest = new SiteStatusInvest();   
     	SiteFundamentus sitefundamentus = new SiteFundamentus();
-    	SiteInvestidor10 siteinvestidor10 =new SiteInvestidor10();
+    	
         List<String> papeis = new ArrayList<>();
         List<String> fundos = new ArrayList<>();
         
@@ -32,9 +30,9 @@ public class FundosAcoes implements Runnable {
         //Lista de papeis
         
         
-        papeis.add("ABCB4");       
-        papeis.add("AERI3");  
-        papeis.add("B3SA3");
+        papeis.add("ABCB4");             
+        //papeis.add("AERI3");  
+        papeis.add("B3SA3");        
         papeis.add("BBDC3");
         papeis.add("BBSE3");
         papeis.add("BEES3");
@@ -59,17 +57,18 @@ public class FundosAcoes implements Runnable {
         
         //LISTA DE FUNDOS 
         fundos.add("GARE11");        
-        fundos.add("RECT11");      
         fundos.add("HOFC11");
         fundos.add("IRDM11");
         fundos.add("LIFE11");
         fundos.add("MXRF11");     
-        fundos.add("SCPF11");
+        fundos.add("OURE11");
+        fundos.add("RECT11");  
         fundos.add("SEQR11");
-        fundos.add("TORD11");
-        fundos.add("VINO11");
-        fundos.add("VIUR11");
-        fundos.add("VSLH11"); 
+            
+        //fundos.add("TORD11");
+        //fundos.add("VINO11");
+        //fundos.add("VIUR11");
+        //fundos.add("VSLH11"); 
       
         
       
@@ -79,12 +78,11 @@ public class FundosAcoes implements Runnable {
         for (String papel : papeis) {        
             try{
                sitestatusinvest.InicializarCotacao(papel);
-              //  Thread.sleep(15000);
+               Thread.sleep(3000);
                sitefundamentus.InicializarCotacao(papel);
-             //  Thread.sleep(10000);
-               siteinvestidor10.InicializarCotacao(papel);
-             //  Thread.sleep(15000);   
-            }catch(Exception e){
+               Thread.sleep(3000); 
+               siteinvestidor10.InicializarCotacao(papel) ;
+            }catch(InterruptedException e){
                 System.out.println(e.toString());
             }
                   
@@ -93,11 +91,10 @@ public class FundosAcoes implements Runnable {
         for (String papel : fundos) {        
             try{
                sitestatusinvest.InicializarCotacao(papel, 1);
-                //Thread.sleep(15000);
+               Thread.sleep(3000);
                sitefundamentus.InicializarCotacao(papel, 1);
-              //Thread.sleep(10000);
+               Thread.sleep(3000); 
                siteinvestidor10.InicializarCotacao(papel, 1);
-               //Thread.sleep(15000);  
             }catch(Exception e){
                 System.out.println(e.toString());
             }

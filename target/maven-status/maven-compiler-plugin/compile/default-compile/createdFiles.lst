@@ -1,6 +1,8 @@
-bancodados\ConexaoSqlite.class
 principal\FundosAcoes.class
 navegadores\SiteStatusInvest.class
-models\PapelCotacao.class
 navegadores\SiteFundamentus.class
+bancodados\ConexaoSqlite.class
+principal\AgendadorDeTarefas.class
+models\PapelCotacao.class
+models\SeleniumDriver.class
 navegadores\SiteInvestidor10.class

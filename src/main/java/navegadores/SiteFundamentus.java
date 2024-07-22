@@ -5,6 +5,7 @@
 package navegadores;
 import bancodados.ConexaoSqlite;
 import models.PapelCotacao;
+import models.SeleniumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class SiteFundamentus {
 
-    private final WebDriver driver = new ChromeDriver();
+    private WebDriver driver ;
     private PapelCotacao papel;
 
     public boolean InicializarCotacao(String sPapel){    
@@ -31,6 +32,8 @@ public class SiteFundamentus {
             this.papel.Codigo = sPapel;
             this.papel.SiteOrigem = "Fundamentus";
             String url = "https://www.fundamentus.com.br/detalhes.php?papel=" + sPapel;
+          
+            driver = SeleniumDriver.DriverStart();
             driver.get(url);
 
             //buscando dados em comum
@@ -58,24 +61,18 @@ public class SiteFundamentus {
             }
 
             ConexaoSqlite.SalvarPapelCotacao(papel);
+            
+           //driver.quit();
 
         }catch(Exception e) {
             System.out.println(e.toString());
+            SeleniumDriver.DriverFinish();
             return false;
         }		
         return true;
     }
 
-    public  boolean DriverEncerrar() {
-        try {
-            driver.quit();
 
-        } catch(Exception e) {
-            System.out.println(e.toString());
-            return false;
-        }	
-        return true;
-    }
 
     private void  Preco( ) {
         System.out.println("fundamentus - Buscando Preço ");

@@ -1,6 +1,8 @@
-C:\PROGRAMAS\fundosAcoes\src\main\java\navegadores\SiteFundamentus.java
-C:\PROGRAMAS\fundosAcoes\src\main\java\principal\FundosAcoes.java
-C:\PROGRAMAS\fundosAcoes\src\main\java\bancodados\ConexaoSqlite.java
-C:\PROGRAMAS\fundosAcoes\src\main\java\models\PapelCotacao.java
-C:\PROGRAMAS\fundosAcoes\src\main\java\navegadores\SiteStatusInvest.java
-C:\PROGRAMAS\fundosAcoes\src\main\java\navegadores\SiteInvestidor10.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\navegadores\SiteFundamentus.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\navegadores\SiteInvestidor10.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\navegadores\SiteStatusInvest.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\bancodados\ConexaoSqlite.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\models\PapelCotacao.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\models\SeleniumDriver.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\principal\AgendadorDeTarefas.java
+C:\PROGRAMAS\AcoesFundos\src\main\java\principal\FundosAcoes.java
