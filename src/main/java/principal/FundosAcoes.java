@@ -78,7 +78,7 @@ public class FundosAcoes implements Runnable {
         for (String papel : papeis) {        
             try{
                sitestatusinvest.InicializarCotacao(papel);
-               Thread.sleep(3000);
+               Thread.sleep(1000);
                sitefundamentus.InicializarCotacao(papel);
                Thread.sleep(3000); 
                siteinvestidor10.InicializarCotacao(papel) ;
