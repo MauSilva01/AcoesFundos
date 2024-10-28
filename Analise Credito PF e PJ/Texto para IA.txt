@@ -1,0 +1,136 @@
+********************************************************************************************************************************************
+* Interfaces 
+********************************************************************************************************************************************
+
+	***** Interfaces de Pessoas 
+		Criar uma Interface de pessoas com os campos de identificação tipo de pessoa física ou jurídica e o ID dessa pessoa, ativo sim ou nao 
+
+
+********************************************************************************************************************************************
+* Dominios de Cadastro Geral
+********************************************************************************************************************************************
+
+	*****  Dados de endereço 
+		Mostre me como cria uma classe de endereço em Kotlin  com os campos (cep, logradouro, número, complemento, bairro, cidade, estado) e um campo para classificar o tipo de endereço com um enum com os principais tipos de endereço, sem o o tipo de endereço de correspondencia, criar uma campo tipo sim ou não para correspondência, a classe deve conter validação de campos e busca por cep pelo site dos correios.
+
+
+	***** Contato Eletronico
+		Mostre me como cria uma classe de endereço eletronico contendo os campos  (tipo de contato, valor, descricao) e compo para indicar se é endereço principal com um enum com os principais tipo de contato eletrônico com validação do seu tipo de endereço
+
+
+	***** Contato telefonicos
+		Mostre me como cria uma classe de endereço eletronico contendo os campos  (Tipos de Contato Telefonico, numero, descricao, indicador se é Principal, com u enum com os principais tipos de contatos telefônicos e validações.
+
+
+	***** Dados Bancário
+		Mostre me como cria uma classe de Dados Bancário contendo os campos (tipo de Conta,  Banco, número da Agencia, numero da Conta ,: TipoConta, Titular (sim ou não) , é Principal) com enum com tipo de contas e validações. 
+
+
+	***** Dados Cartao de Credito
+		Mostre me como cria uma classe de Dados Cartao de Crédito com os campos ( Define os diferentes tipos de {cartões de crédito, como Visa, MasterCard, American Express},  o número do cartão de crédito.
+		, a data de validade do cartão no formato MM/AA.
+		, o nome do titular do cartão.
+		, o código de segurança do cartão (CVV).
+		, indicador se esse cartão é o principal (o valor padrão é false)) e validações 
+
+
+	**** Dados de Referência Comercial
+		Mostre me como cria uma classe de Referência Comercial com os campos: 
+		nomeEmpresa: String — o nome da empresa. obrigatório
+		cnpj: String — o CNPJ da empresa, no formato XX.XXX.XXX/0001-XX.
+		nomeContato: String — o nome do contato na empresa.
+		telefone: String — o telefone de contato, no formato (XX) XXXXX-XXXX. 
+		email: String — o e-mail de contato.
+		observacoes: String? — um campo opcional para observações sobre a referência.
+		isPrincipal: Boolean — indica se essa referência é a principal (o valor padrão é false).
+
+		preenchimento obrigatório do telefone ou e-mail 
+
+		Criar validações para as informações 
+
+	**** Dados de Bens e Direitos
+		Mostre me como cria uma classe de bens e direitos com um enum Define os diferentes tipos de bens e direitos, como imóvel, veículo, aplicação financeira, objeto de valor, direito autoral e outros. 
+	
+		Com os campos: 
+			tipo: TipoBemEDireito — tipo do bem ou direito.
+			descricao: String — descrição do bem ou direito (obrigatório).
+			valorEstimado: Double — valor estimado do bem ou direito (não pode ser negativo).
+			dataAquisicao: String — data de aquisição no formato YYYY-MM-DD (obrigatório).
+			observacoes: String? — campo opcional para observações sobre o bem ou direito.
+
+		
+	**** Dados de Dívidas e Onus
+		Mostre me como cria uma classe de dívidas e ônus que inclua diferentes tipos de dívidas, identificaçao do tipo de credor 
+		
+		Com os campos:
+			nomeCredor: Nome do credor (obrigatório).
+			valor: Valor da dívida (não pode ser negativo).
+			dataVencimento: Data de vencimento da dívida no formato YYYY-MM-DD (obrigatório).
+			tipo: Tipo da dívida (usando o enum TipoDivida, obrigatório).
+			tipoCredor: Tipo do credor (usando o enum TipoCredor, obrigatório).
+			status: Status da dívida (paga ou não), padrão é false (não paga).
+			descricao: Descrição opcional da dívida.
+		
+		Com validações 
+
+		
+********************************************************************************************************************************************
+* Dominios de Cadastro Pessoa 
+********************************************************************************************************************************************
+
+	***** Interfaces de Pessoas 
+		Mostre como criar uma classe de pessoa fisica que implemente a interface de pessoas 
+		
+		Com os campso 
+			nome
+			cpf
+			rg
+			orgaoExpedidor
+			dataExpedicaoRg
+			nomeMae
+			nomePai
+			nacionalidade
+			naturalidadeCidade
+			naturalidadeEstado
+			nacionalidade 
+			sexo: Sexo,
+			dataNascimento
+			estadoCivil do enum de 
+			profissao
+			numeroDependentes
+     		email
+			rendaMensal
+		 
+			Dados do Conjuge referencia para um objeto desta mesma classe 
+		
+			Lista de endereço, permitindo apenas um endereço de principal por tipo. obrigatório um endereco de correspondência.
+			Lista de Contato Eletronico permitindo apenas um endereço de principal por tipo se houver apenas principal por padrao.
+			Lista de Contato telefonicos
+			Lista Dados Bancário
+			Lista de Dados Cartao de Credito
+			Lista de Referência Comercial
+			Lista de Referência Bancária
+			Lista de Bens e Direitos
+			Lista de Dívidas e Onus
+
+			Valor total de Bens e Direitos somatoria da lista de bens e direitos 
+			Valor total de Dividas e Onus somatoria da lista de dívida e onus 
+	
+			Apresentar a idade baseado na data atual e data de nascimento.
+			
+			validar a data de nascimento para idade acima de 18 e menor que 120 anos 
+			validar o nome deve ter nome e sobrenome.
+			verificar se o nome ja existe na baseado
+			verificar se o cpf ja existe na base associado a outra pessoa. 
+			Se preenchido validar se o nome da mae contem nome e sobrenome.
+			Se preenchido validar se o nome do pai contem nome e sobrenome.
+			
+
+
+
+
+
+
+
+
+

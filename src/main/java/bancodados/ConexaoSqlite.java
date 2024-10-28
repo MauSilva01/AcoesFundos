@@ -4,8 +4,6 @@
  */
 package bancodados;
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
