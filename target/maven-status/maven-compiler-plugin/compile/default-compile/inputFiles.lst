@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\principal\AgendadorDeTarefas.java
 C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\navegadores\SiteFundamentus.java
 C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\principal\FundosAcoes.java
@@ -6,3 +7,13 @@ C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\models\SeleniumDriv
 C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\navegadores\SiteInvestidor10.java
 C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\bancodados\ConexaoSqlite.java
 C:\Users\Felipe\Downloads\Mauricio\fundosAcoes\src\main\java\navegadores\SiteStatusInvest.java
+=======
+C:\Programas\fundosAcoes\src\main\java\navegadores\SiteFundamentus.java
+C:\Programas\fundosAcoes\src\main\java\principal\AgendadorDeTarefas.java
+C:\Programas\fundosAcoes\src\main\java\principal\FundosAcoes.java
+C:\Programas\fundosAcoes\src\main\java\models\SeleniumDriver.java
+C:\Programas\fundosAcoes\src\main\java\bancodados\ConexaoSqlite.java
+C:\Programas\fundosAcoes\src\main\java\models\PapelCotacao.java
+C:\Programas\fundosAcoes\src\main\java\navegadores\SiteStatusInvest.java
+C:\Programas\fundosAcoes\src\main\java\navegadores\SiteInvestidor10.java
+>>>>>>> 5e1b2866c49d5a0ea2e7e89f3b5ad621e932266c

@@ -14,7 +14,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>principal.FundosAcoes</mainClass>
+              <mainClass>principal.AgendadorDeTarefas</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -31,7 +31,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>principal.FundosAcoes</mainClass>
+                  <mainClass>principal.AgendadorDeTarefas</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -56,7 +56,7 @@
   </dependencies>
   <properties>
     <maven.compiler.target>21</maven.compiler.target>
-    <exec.mainClass>principal.FundosAcoes</exec.mainClass>
+    <exec.mainClass>principal.AgendadorDeTarefas</exec.mainClass>
     <maven.compiler.source>21</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
